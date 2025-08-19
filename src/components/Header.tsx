@@ -7,10 +7,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Sobre Nós", href: "#sobre" },
-    { label: "Catálogo", href: "#produtos" },
-    { label: "Contatos", href: "#contato" },
+    { label: "Home", href: "/" },
+    { label: "Sobre Nós", href: "/sobre" },
+    { label: "Catálogo", href: "/produtos" },
+    { label: "Contatos", href: "/contato" },
   ];
 
   const productCategories = [
@@ -54,24 +54,32 @@ const Header = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="Ceará Perfil" className="h-12 w-12" />
+            <div className="flex items-center space-x-3">
+              <div className="relative">
+                <img src={logo} alt="Ceará Perfil" className="h-12 w-12 drop-shadow-sm" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full opacity-80"></div>
+              </div>
               <div>
-                <h1 className="text-xl font-bold text-ceara-gray">CEARÁ</h1>
-                <p className="text-sm text-muted-foreground">PERFIL</p>
+                <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide">CEARÁ</h1>
+                <p className="text-sm text-muted-foreground text-quality tracking-widest">PERFIL</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-ceara font-medium"
-                >
-                  {item.label}
-                </a>
+              {navItems.map((item, index) => (
+                <div key={item.label} className="relative group">
+                  <a
+                    href={item.href}
+                    className="text-foreground hover:text-primary transition-ceara font-medium text-quality relative px-3 py-2 rounded-md hover:bg-muted/50"
+                  >
+                    {item.label}
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                  </a>
+                  {index < navItems.length - 1 && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-4 bg-border opacity-30"></div>
+                  )}
+                </div>
               ))}
             </nav>
 
@@ -93,17 +101,22 @@ const Header = () => {
         </div>
 
         {/* Product Categories Bar */}
-        <div className="bg-primary/95 text-primary-foreground py-3">
+        <div className="bg-gradient-to-r from-primary/95 to-primary text-primary-foreground py-3 border-t border-primary-foreground/10">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
               {productCategories.map((category, index) => (
-                <a
-                  key={index}
-                  href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="hover:text-accent transition-ceara px-2 py-1 rounded"
-                >
-                  {category}
-                </a>
+                <div key={index} className="relative group">
+                  <a
+                    href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="hover:text-accent transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-white/10 relative inline-flex items-center"
+                  >
+                    <span className="relative z-10">{category}</span>
+                    <div className="absolute inset-0 bg-white/5 rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
+                  </a>
+                  {index < productCategories.length - 1 && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-3 w-px h-3 bg-primary-foreground/20"></div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

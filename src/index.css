@@ -58,6 +58,11 @@ All colors MUST be HSL.
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Text Shadows for Quality */
+    --text-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --text-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.15);
+    --text-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.2);
+
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -155,5 +160,27 @@ All colors MUST be HSL.
   
   .btn-success {
     @apply bg-green-600 text-white hover:bg-green-700 px-6 py-3 rounded-md font-medium transition-ceara shadow-ceara;
+  }
+  
+  /* High Quality Text */
+  .text-quality {
+    text-shadow: var(--text-shadow-sm);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .text-quality-md {
+    text-shadow: var(--text-shadow-md);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .text-quality-lg {
+    text-shadow: var(--text-shadow-lg);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

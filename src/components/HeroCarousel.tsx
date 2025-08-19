@@ -95,17 +95,17 @@ const HeroCarousel = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-quality-lg">
               {currentSlideData.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl mb-6 opacity-90 italic">
+            <p className="text-xl md:text-2xl mb-6 opacity-90 italic text-quality-md">
               {currentSlideData.subtitle}
             </p>
 
             {/* Description */}
-            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80">
+            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80 text-quality">
               {currentSlideData.description}
             </p>
 
@@ -114,7 +114,7 @@ const HeroCarousel = () => {
               {currentSlideData.categories.map((category, index) => (
                 <span
                   key={index}
-                  className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30"
+                  className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 text-quality"
                 >
                   {category}
                 </span>

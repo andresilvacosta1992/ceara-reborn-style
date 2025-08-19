@@ -66,10 +66,10 @@ const ProductsSection = () => {
     <section id="produtos" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4 text-quality-lg">
             Nossos Produtos
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-quality">
             Soluções completas em infraestrutura elétrica com a qualidade que você precisa
           </p>
         </div>
@@ -86,12 +86,12 @@ const ProductsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-ceara"></div>
               </div>
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-foreground group-hover:text-primary transition-ceara">
+                <CardTitle className="text-lg text-foreground group-hover:text-primary transition-ceara text-quality-md">
                   {product.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm mb-4">
+                <p className="text-muted-foreground text-sm mb-4 text-quality leading-relaxed">
                   {product.description}
                 </p>
                 <Button 
