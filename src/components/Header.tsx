@@ -1,8 +1,12 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { useState } from "react";
 import { getWhatsAppUrl } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Header = () => {
@@ -70,11 +74,18 @@ const Header = () => {
             </button>
 
             {/* Logo - Centered on mobile */}
-            <a href="/" className="flex items-center hover:opacity-80 transition-ceara md:flex-none flex-1 justify-center md:justify-start">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-ceara md:flex-none flex-1 justify-center md:justify-start">
               <div className="relative">
-                <img src={logoUrl} alt="Ceará Perfil" className="h-16 md:h-20 w-auto drop-shadow-sm" />
+                <Image 
+                  src={logoUrl} 
+                  alt="Ceará Perfil" 
+                  width={80} 
+                  height={80} 
+                  className="h-16 md:h-20 w-auto drop-shadow-sm" 
+                  priority
+                />
               </div>
-            </a>
+            </Link>
 
             {/* Mobile WhatsApp Button */}
             <div className="md:hidden">
@@ -93,13 +104,13 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
                 <div key={item.label} className="relative group">
-                  <a
+                  <Link
                     href={item.href}
                     className="text-foreground hover:text-primary transition-ceara font-medium text-quality relative px-3 py-2 rounded-md hover:bg-muted/50 font-inter"
                   >
                     {item.label}
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                  </a>
+                  </Link>
                   {index < navItems.length - 1 && (
                     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-4 bg-border opacity-30"></div>
                   )}
@@ -127,14 +138,14 @@ const Header = () => {
           <div className="md:hidden bg-background border-t">
             <nav className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
                   className="block text-foreground hover:text-primary transition-ceara"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <Button 
                 variant="cta" 
@@ -154,13 +165,13 @@ const Header = () => {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               {productCategories.map((category, index) => (
                 <div key={index} className="relative group">
-                  <a
+                  <Link
                     href={category.url}
                     className="hover:text-white transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-[hsl(var(--ceara-blue-hover))] relative inline-flex items-center"
                   >
                     <span className="relative z-10">{category.name}</span>
                     <div className="absolute inset-0 bg-[hsl(var(--ceara-blue-soft)/0.2)] rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
-                  </a>
+                  </Link>
                   {index < productCategories.length - 1 && (
                     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-3 w-px h-3 bg-primary-foreground/20"></div>
                   )}

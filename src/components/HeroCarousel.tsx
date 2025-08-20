@@ -1,8 +1,10 @@
+'use client'
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from "@/components/ui/button";
-import { OptimizedImage } from "@/components/ui/optimized-image";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 
 const slideImages = {
@@ -89,7 +91,7 @@ const HeroCarousel = () => {
       // Load current image first (priority)
       const loadImage = (src: string, index: number) => {
         return new Promise<void>((resolve) => {
-          const img = new Image();
+          const img = document.createElement('img');
           img.onload = () => {
             setImagesLoaded(prev => {
               const newState = [...prev];
@@ -154,12 +156,14 @@ const HeroCarousel = () => {
         <div className="embla__container h-full">
           {slides.map((slide, index) => (
             <div key={slide.id} className="embla__slide relative h-full flex-none w-full">
-              <OptimizedImage
+              <Image
                 src={slide.image}
                 alt={`${slide.title} - Ceará Perfil Infraestrutura Elétrica`}
-                className="absolute inset-0 w-full h-full object-cover"
-                lazy={index > 0}
+                fill
+                className="object-cover"
+                priority={index === 0}
                 sizes="100vw"
+                quality={90}
                 style={{
                   transform: 'translate3d(0, 0, 0)',
                   willChange: index === selectedIndex ? 'transform' : 'auto'
