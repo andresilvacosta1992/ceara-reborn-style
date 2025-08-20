@@ -45,10 +45,10 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2 mt-1 md:mt-0">
-            <a href="https://facebook.com/cearaperfil" target="_blank" rel="noopener noreferrer">
+            <a href="https://facebook.com/cearaperfil" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Facebook">
               <Facebook className="w-4 h-4 cursor-pointer hover:opacity-80 transition-ceara" />
             </a>
-            <a href="https://instagram.com/cearaperfil" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/cearaperfil" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">
               <Instagram className="w-4 h-4 cursor-pointer hover:opacity-80 transition-ceara" />
             </a>
           </div>
@@ -63,6 +63,8 @@ const Header = () => {
             <button
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Abrir menu de navegação"
+              aria-expanded={isMenuOpen}
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -81,6 +83,7 @@ const Header = () => {
                 size="sm"
                 className="interactive-glow shadow-success px-3"
                 onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de solicitar um orçamento."), "_blank")}
+                aria-label="Solicitar orçamento via WhatsApp"
               >
                 <BsWhatsapp className="w-4 h-4" />
               </Button>
