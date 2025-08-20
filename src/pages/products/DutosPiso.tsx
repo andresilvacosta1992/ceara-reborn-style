@@ -4,14 +4,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import { ArrowLeft, Phone, Mail, Building, Zap, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import dutosPisoImage from "@/assets/products/dutos-piso.jpg";
-
-const DutosPiso = () => {
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BsWhatsapp } from "react-icons/bs";
-import { ArrowLeft, Phone, Mail, Building, Zap, Network } from "lucide-react";
-import { Link } from "react-router-dom";
-import dutosPisoImage from "@/assets/products/dutos-piso.jpg";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const DutosPiso = () => {

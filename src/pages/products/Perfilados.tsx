@@ -4,14 +4,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import { ArrowLeft, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import perfiladosImage from "@/assets/products/perfilados.jpg";
-
-const Perfilados = () => {
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BsWhatsapp } from "react-icons/bs";
-import { ArrowLeft, Phone, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
-import perfiladosImage from "@/assets/products/perfilados.jpg";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const Perfilados = () => {

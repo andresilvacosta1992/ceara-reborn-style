@@ -4,14 +4,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import { ArrowLeft, Phone, Mail, Zap, Shield, Settings, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
 import quadrosComandosImage from "@/assets/products/quadros-comandos.jpg";
-
-const QuadrosComandos = () => {
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BsWhatsapp } from "react-icons/bs";
-import { ArrowLeft, Phone, Mail, Zap, Shield, Settings, Cpu } from "lucide-react";
-import { Link } from "react-router-dom";
-import quadrosComandosImage from "@/assets/products/quadros-comandos.jpg";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const QuadrosComandos = () => {

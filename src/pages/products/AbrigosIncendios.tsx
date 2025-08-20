@@ -4,14 +4,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import { ArrowLeft, Phone, Mail, Shield, Zap, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import abrigosImage from "@/assets/products/abrigos-incendios.jpg";
-
-const AbrigosIncendios = () => {
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BsWhatsapp } from "react-icons/bs";
-import { ArrowLeft, Phone, Mail, Shield, Zap, Settings } from "lucide-react";
-import { Link } from "react-router-dom";
-import abrigosImage from "@/assets/products/abrigos-incendios.jpg";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const AbrigosIncendios = () => {
