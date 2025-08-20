@@ -1,48 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
-// WebP support detection
-const supportsWebP = (() => {
-  if (typeof window === 'undefined') return false;
-  const canvas = document.createElement('canvas');
-  canvas.width = 1;
-  canvas.height = 1;
-  return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-})();
 
 const slideImages = {
-  equipe: {
-    webp: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.webp",
-    fallback: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.png"
-  },
-  paineis: {
-    webp: "/lovable-uploads/1ca9b540-c06e-456f-b772-296dd218750e.webp",
-    fallback: "/lovable-uploads/1ca9b540-c06e-456f-b772-296dd218750e.png"
-  },
-  corredor: {
-    webp: "/lovable-uploads/ea1a0a40-7949-49e6-af36-7a53d7b9399f.webp",
-    fallback: "/lovable-uploads/ea1a0a40-7949-49e6-af36-7a53d7b9399f.png"
-  },
-  perfilados: {
-    webp: "/lovable-uploads/4c18daa1-0b84-41e3-ab54-8a5a9c46cff2.webp",
-    fallback: "/lovable-uploads/4c18daa1-0b84-41e3-ab54-8a5a9c46cff2.png"
-  },
-  cabos: {
-    webp: "/lovable-uploads/58d6c2c6-934b-42e4-9a5e-dd5604b17556.webp",
-    fallback: "/lovable-uploads/58d6c2c6-934b-42e4-9a5e-dd5604b17556.png"
-  }
-};
-
-// Get optimal image source
-const getImageSrc = (imageKey: keyof typeof slideImages) => {
-  const imageSet = slideImages[imageKey];
-  return supportsWebP ? imageSet.webp : imageSet.fallback;
+  equipe: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.png",
+  paineis: "/lovable-uploads/1ca9b540-c06e-456f-b772-296dd218750e.png", 
+  corredor: "/lovable-uploads/ea1a0a40-7949-49e6-af36-7a53d7b9399f.png",
+  perfilados: "/lovable-uploads/4c18daa1-0b84-41e3-ab54-8a5a9c46cff2.png",
+  cabos: "/lovable-uploads/58d6c2c6-934b-42e4-9a5e-dd5604b17556.png"
 };
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const slides = [
     {
@@ -51,7 +21,7 @@ const HeroCarousel = () => {
       subtitle: "soluções completas para cabeamento",
       description: "Eletrocalhas, leitos para cabos e eletrodutos com a máxima qualidade",
       categories: ["Eletrocalhas", "Leitos para cabos", "Eletrodutos"],
-      image: getImageSrc('cabos'),
+      image: slideImages.cabos,
       primaryBtn: "SOLICITAR ORÇAMENTO",
       secondaryBtn: "VER PRODUTOS"
     },
@@ -61,7 +31,7 @@ const HeroCarousel = () => {
       subtitle: "sistemas robustos de suporte",
       description: "Perfilados, acessórios para fixação e abraçadeiras para suas instalações",
       categories: ["Perfilados", "Acessórios para fixação", "Abraçadeiras"],
-      image: getImageSrc('perfilados'),
+      image: slideImages.perfilados,
       primaryBtn: "CONSULTAR PREÇOS",
       secondaryBtn: "CATÁLOGO"
     },
@@ -71,7 +41,7 @@ const HeroCarousel = () => {
       subtitle: "painéis e sistemas elétricos",
       description: "Quadros de comandos e sistemas elétricos com tecnologia de ponta",
       categories: ["Quadros de comandos", "Painéis elétricos", "Sistemas de proteção"],
-      image: getImageSrc('paineis'),
+      image: slideImages.paineis,
       primaryBtn: "VER MODELOS",
       secondaryBtn: "ESPECIFICAÇÕES"
     },
@@ -81,7 +51,7 @@ const HeroCarousel = () => {
       subtitle: "infraestrutura discreta e elegante",
       description: "Dutos de piso e sistemas de acabamento para projetos especiais",
       categories: ["Dutos de piso", "Rodapés Metálicos", "Acabamentos"],
-      image: getImageSrc('corredor'),
+      image: slideImages.corredor,
       primaryBtn: "PROJETOS ESPECIAIS",
       secondaryBtn: "CONTATO"
     },
@@ -91,48 +61,23 @@ const HeroCarousel = () => {
       subtitle: "qualidade, agilidade e confiança",
       description: "Profissionais qualificados para projetos de infraestrutura elétrica",
       categories: ["Consultoria Técnica", "Suporte Especializado", "Projetos Customizados"],
-      image: getImageSrc('equipe'),
+      image: slideImages.equipe,
       primaryBtn: "FALE CONOSCO",
       secondaryBtn: "SOBRE NÓS"
     }
   ];
 
-  // Preload images for smooth transitions
+  // Auto-advance slides
   useEffect(() => {
-    const preloadImages = async () => {
-      const imagePromises = slides.map((slide) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = resolve;
-          img.onerror = reject;
-          img.src = slide.image;
-        });
-      });
-      
-      try {
-        await Promise.all(imagePromises);
-        setImagesLoaded(true);
-      } catch (error) {
-        console.warn('Some images failed to preload:', error);
-        setImagesLoaded(true); // Continue anyway
-      }
-    };
-
-    preloadImages();
-  }, [slides]);
-
-  useEffect(() => {
-    if (!imagesLoaded) return;
-    
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
         setIsTransitioning(false);
-      }, 100);
-    }, 6000);
+      }, 150);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [slides.length, imagesLoaded]);
+  }, [slides.length]);
 
   const nextSlide = useCallback(() => {
     if (isTransitioning) return;
@@ -140,7 +85,7 @@ const HeroCarousel = () => {
     setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
       setIsTransitioning(false);
-    }, 100);
+    }, 150);
   }, [slides.length, isTransitioning]);
 
   const prevSlide = useCallback(() => {
@@ -149,7 +94,7 @@ const HeroCarousel = () => {
     setTimeout(() => {
       setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
       setIsTransitioning(false);
-    }, 100);
+    }, 150);
   }, [slides.length, isTransitioning]);
 
   const currentSlideData = slides[currentSlide];
@@ -157,12 +102,11 @@ const HeroCarousel = () => {
   return (
     <section id="home" className="relative h-screen overflow-hidden">
       <div 
-        className={`absolute inset-0 bg-cover bg-center slide-image ${isTransitioning ? 'opacity-90' : 'opacity-100'}`}
+        className={`absolute inset-0 bg-cover bg-center slide-container slide-image ${isTransitioning ? 'opacity-90' : 'opacity-100'}`}
         style={{ 
           backgroundImage: `url(${currentSlideData.image})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transform: isTransitioning ? 'scale(1.02)' : 'scale(1)'
+          backgroundPosition: 'center'
         }}
       >
         <div className="hero-overlay absolute inset-0"></div>
