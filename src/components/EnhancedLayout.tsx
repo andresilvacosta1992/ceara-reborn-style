@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { FloatingActionButton } from "@/components/ui/floating-action-button";
 import { ArrowUp } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 
 const EnhancedLayout = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -34,11 +35,13 @@ const EnhancedLayout = () => {
       
       {/* Floating Action Buttons */}
       <FloatingActionButton
-        fabType="chat"
-        position="bottom-left"
+        fabType="custom"
+        position="bottom-right"
         onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
         className="bg-green-600 hover:bg-green-700"
-      />
+      >
+        <BsWhatsapp className="w-6 h-6" />
+      </FloatingActionButton>
       
       {showScrollTop && (
         <FloatingActionButton

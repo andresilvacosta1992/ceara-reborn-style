@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, Mail, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Menu, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 import { useState } from "react";
 const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
@@ -90,7 +91,7 @@ const Header = () => {
                 className="interactive-glow shadow-success"
                 onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
               >
-                <MessageCircle className="w-5 h-5" />
+                <BsWhatsapp className="w-5 h-5" />
                 <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
               </Button>
             </div>
@@ -146,7 +147,7 @@ const Header = () => {
                 className="mobile-full mt-4"
                 onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
               >
-                <MessageCircle className="w-5 h-5" />
+                <BsWhatsapp className="w-5 h-5" />
                 <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
               </Button>
             </nav>
