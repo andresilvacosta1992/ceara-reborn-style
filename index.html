@@ -1,87 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="hsl(222.2 84% 4.9%)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
-    <!-- Performance optimizations -->
-    <meta http-equiv="X-DNS-Prefetch-Control" content="on">
+    <!-- Otimizações de Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="//api.whatsapp.com">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>Ceará Perfil - Soluções em Infraestrutura Elétrica</title>
+    <meta name="description" content="Eletrocalhas, perfilados, leitos para cabos e eletrodutos em São Bernardo do Campo - SP. Mais de 15 anos fornecendo soluções em infraestrutura elétrica com qualidade garantida. Solicite seu orçamento!" />
+    <meta name="author" content="Ceará Perfil" />
+    <meta name="keywords" content="eletrocalhas, perfilados, leitos para cabos, eletrodutos, infraestrutura elétrica, abraçadeiras, dutos de piso, São Bernardo do Campo, SP" />
+    
+    <!-- Localização Brasil -->
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.country" content="BR" />
+    <meta name="geo.placename" content="São Bernardo do Campo" />
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="canonical" href="https://cearaperfil.com.br/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/lovable-uploads/2be4463d-78ac-47bd-8d07-3dbde9601d00.png" type="image/png">
+
+    <!-- Preconnect para otimização de performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Critical CSS inline for instant loading -->
-    <style>
-      :root{--background:0 0% 100%;--foreground:220 13% 18%;--primary:215 95% 40%;--primary-foreground:0 0% 100%;}
-      body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:hsl(var(--background));color:hsl(var(--foreground));line-height:1.6;}
-      .loading{display:flex;justify-content:center;align-items:center;height:100vh;}
-      .spinner{width:2rem;height:2rem;border:2px solid hsl(var(--primary)/0.2);border-top:2px solid hsl(var(--primary));border-radius:50%;animation:spin 1s linear infinite;}
-      @keyframes spin{to{transform:rotate(360deg);}}
-    </style>
-    
-    <!-- Preload critical font with inline fallback -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"></noscript>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Ceará Perfil - Especialistas em eletrocalhas, perfilados metálicos e soluções para infraestrutura elétrica. Qualidade profissional garantida há mais de 20 anos no Ceará." />
-    <meta name="keywords" content="eletrocalhas, perfilados metálicos, infraestrutura elétrica, leitos para cabos, eletrodutos, abraçadeiras, quadros comandos, Fortaleza, Ceará" />
-    <meta name="author" content="Ceará Perfil" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Ceará Perfil - Soluções em Infraestrutura Elétrica | Eletrocalhas e Perfilados" />
-    <meta property="og:description" content="Eletrocalhas, perfilados metálicos e produtos para infraestrutura elétrica. Qualidade profissional garantida há mais de 20 anos." />
+    <!-- Google Fonts com preload e font-display otimizado -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"></noscript>
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cearaperfil.com.br" />
-    <meta property="og:image" content="https://cearaperfil.com.br/assets/logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://cearaperfil.com.br/" />
+    <meta property="og:title" content="Ceará Perfil - Soluções em Infraestrutura Elétrica" />
+    <meta property="og:description" content="Eletrocalhas, perfilados e eletrodutos em São Bernardo do Campo - SP. Especialistas em infraestrutura elétrica há mais de 15 anos. Solicite seu orçamento!" />
+    <meta property="og:image" content="/lovable-uploads/2be4463d-78ac-47bd-8d07-3dbde9601d00.png" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Ceará Perfil" />
-    
-    <!-- Twitter Card Meta Tags -->
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://cearaperfil.com.br/" />
     <meta name="twitter:title" content="Ceará Perfil - Soluções em Infraestrutura Elétrica" />
-    <meta name="twitter:description" content="Eletrocalhas, perfilados metálicos e produtos para infraestrutura elétrica com qualidade profissional." />
-    <meta name="twitter:image" content="https://cearaperfil.com.br/assets/logo.png" />
+    <meta name="twitter:description" content="Eletrocalhas, perfilados e eletrodutos em São Bernardo do Campo - SP. Especialistas em infraestrutura elétrica há mais de 15 anos." />
+    <meta name="twitter:image" content="/lovable-uploads/2be4463d-78ac-47bd-8d07-3dbde9601d00.png" />
     
-    <!-- Canonical URL and Schema -->
-    <link rel="canonical" href="https://cearaperfil.com.br" />
-    
-    <!-- JSON-LD Schema Markup -->
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Ceará Perfil",
-      "url": "https://cearaperfil.com.br",
-      "logo": "https://cearaperfil.com.br/assets/logo.png",
-      "description": "Especialistas em eletrocalhas, perfilados metálicos e soluções para infraestrutura elétrica",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "CE",
-        "addressCountry": "BR"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+55-85-98765-4321",
-        "contactType": "customer service"
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ceará Perfil",
+        "description": "Especialistas em soluções para infraestrutura elétrica: eletrocalhas, perfilados, leitos para cabos e eletrodutos",
+        "url": "https://cearaperfil.com.br",
+        "logo": "/lovable-uploads/2be4463d-78ac-47bd-8d07-3dbde9601d00.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Madeira, 39 - Vila Vivaldi",
+          "addressLocality": "São Bernardo do Campo",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+55-11-94540-3008",
+          "contactType": "sales",
+          "availableLanguage": "Portuguese"
+        },
+        "sameAs": [
+          "https://wa.me/5511945403008"
+        ],
+        "foundingDate": "2008",
+        "numberOfEmployees": "10-50",
+        "areaServed": {
+          "@type": "Place",
+          "name": "Brasil"
+        },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Eletrocalhas"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Perfilados"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product", 
+              "name": "Leitos para Cabos"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Eletrodutos"
+            }
+          }
+        ]
       }
-    }
     </script>
-    
-    <title>Ceará Perfil - Soluções em Infraestrutura Elétrica | Eletrocalhas e Perfilados Metálicos</title>
   </head>
+
   <body>
-    <div id="root">
-      <div class="loading">
-        <div class="spinner"></div>
-      </div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

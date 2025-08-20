@@ -1,14 +1,14 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
+User-agent: Googlebot
 Allow: /
 
-# Sitemaps
-Sitemap: https://cearaperfil.com.br/sitemap.xml
+User-agent: Bingbot
+Allow: /
 
-# Specific crawl delay for respect
-Crawl-delay: 1
+User-agent: Twitterbot
+Allow: /
 
-# Disallow private areas
-Disallow: /admin/
-Disallow: /private/
-Disallow: /_redirects
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
