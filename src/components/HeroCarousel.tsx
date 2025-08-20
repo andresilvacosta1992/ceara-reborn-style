@@ -1,9 +1,10 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { usePerformance, useWebVitals } from "@/hooks/use-performance";
 
 const slideImages = {
   equipe: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.png",
@@ -16,6 +17,10 @@ const slideImages = {
 const HeroCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(new Array(5).fill(false));
+  const { measureInteraction } = usePerformance('HeroCarousel');
+  
+  // Initialize web vitals monitoring
+  useWebVitals();
   
   const autoplay = useRef(
     Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
@@ -30,7 +35,8 @@ const HeroCarousel = () => {
     [autoplay.current]
   );
 
-  const slides = [
+  // Memoized slides data for performance
+  const slides = useMemo(() => [
     {
       id: 1,
       title: "GESTÃO DE CABOS",
@@ -81,12 +87,13 @@ const HeroCarousel = () => {
       primaryBtn: "FALE CONOSCO",
       secondaryBtn: "SOBRE NÓS"
     }
-  ];
+  ], []);
 
-  // Intelligent image preloading
+  // Intelligent image preloading with performance tracking
   useEffect(() => {
     const preloadImages = async () => {
-      // Load current image first (priority)
+      const measurePreload = measureInteraction('image_preload');
+      
       const loadImage = (src: string, index: number) => {
         return new Promise<void>((resolve) => {
           const img = new Image();
@@ -103,26 +110,31 @@ const HeroCarousel = () => {
         });
       };
 
-      // Load first image immediately
+      // Load first image immediately (priority)
       await loadImage(slides[0].image, 0);
       
-      // Load remaining images with slight delay for smooth UX
-      slides.slice(1).forEach((slide, index) => {
+      // Load remaining images with optimized timing
+      const remainingSlides = slides.slice(1);
+      for (let i = 0; i < remainingSlides.length; i++) {
         setTimeout(() => {
-          loadImage(slide.image, index + 1);
-        }, (index + 1) * 100);
-      });
+          loadImage(remainingSlides[i].image, i + 1);
+        }, i * 150); // Staggered loading
+      }
+      
+      measurePreload(); // End performance measurement
     };
 
     preloadImages();
-  }, [slides]);
+  }, [slides, measureInteraction]);
 
-  // Embla API setup
+  // Embla API setup with performance monitoring
   useEffect(() => {
     if (!emblaApi) return;
 
+    const measureSlideChange = measureInteraction('slide_change');
     const onSelect = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
+      measureSlideChange();
     };
 
     emblaApi.on('select', onSelect);
@@ -131,19 +143,31 @@ const HeroCarousel = () => {
     return () => {
       emblaApi.off('select', onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, measureInteraction]);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (emblaApi) {
+      const measure = measureInteraction('nav_prev');
+      emblaApi.scrollPrev();
+      measure();
+    }
+  }, [emblaApi, measureInteraction]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (emblaApi) {
+      const measure = measureInteraction('nav_next');
+      emblaApi.scrollNext();
+      measure();
+    }
+  }, [emblaApi, measureInteraction]);
 
   const scrollTo = useCallback((index: number) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  }, [emblaApi]);
+    if (emblaApi) {
+      const measure = measureInteraction('nav_indicator');
+      emblaApi.scrollTo(index);
+      measure();
+    }
+  }, [emblaApi, measureInteraction]);
 
   const currentSlideData = slides[selectedIndex];
 
@@ -153,12 +177,13 @@ const HeroCarousel = () => {
       <div className="embla h-full" ref={emblaRef}>
         <div className="embla__container h-full">
           {slides.map((slide, index) => (
-            <div key={slide.id} className="embla__slide relative h-full flex-none w-full">
+            <div key={slide.id} className="embla__slide relative h-full flex-none w-full gpu-accelerated">
               <OptimizedImage
                 src={slide.image}
                 alt={`${slide.title} - Ceará Perfil Infraestrutura Elétrica`}
                 className="absolute inset-0 w-full h-full object-cover"
                 lazy={index > 0}
+                priority={index === 0}
                 sizes="100vw"
                 style={{
                   transform: 'translate3d(0, 0, 0)',
@@ -200,7 +225,7 @@ const HeroCarousel = () => {
               {currentSlideData.categories.map((category, index) => (
                 <span
                   key={index}
-                  className="category-tag text-quality font-inter"
+                  className="category-tag text-quality font-inter gpu-accelerated"
                 >
                   {category}
                 </span>
@@ -227,14 +252,14 @@ const HeroCarousel = () => {
       {/* Navigation Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara gpu-accelerated"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara gpu-accelerated"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
@@ -246,7 +271,7 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => scrollTo(index)}
-            className={`w-3 h-3 rounded-full transition-ceara ${
+            className={`w-3 h-3 rounded-full transition-ceara gpu-accelerated ${
               index === selectedIndex ? "bg-white" : "bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}

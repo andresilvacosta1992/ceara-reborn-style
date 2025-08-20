@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, ShoppingCart, Eye } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { LoadingState } from "@/components/ui/loading-state";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { getWhatsAppUrl } from "@/lib/utils";
+import { usePerformance } from "@/hooks/use-performance";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import perfiladosImage from "@/assets/products/perfilados.jpg";
 import eletrocalhasImage from "@/assets/products/eletrocalhas.jpg";
 import leitosCabosImage from "@/assets/products/leitos-cabos.jpg";
@@ -20,16 +22,14 @@ import abrigosIncendiosImage from "@/assets/products/abrigos-incendios.jpg";
 
 const ProductsSection = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { measureInteraction } = usePerformance('ProductsSection');
+  const { elementRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.1,
+    triggerOnce: true
+  });
 
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-  const products = [
+  // Memoized products data for performance
+  const products = useMemo(() => [
     {
       title: "Perfilados",
       description: "Estruturas metálicas perfuradas para suporte e organização",
@@ -96,15 +96,38 @@ const ProductsSection = () => {
       image: abrigosIncendiosImage,
       url: "/produtos/abrigos-incendios"
     }
-  ];
+  ], []);
+
+  useEffect(() => {
+    if (!isIntersecting) return;
+    
+    // Simulate intelligent loading based on viewport
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Reduced loading time
+
+    return () => clearTimeout(timer);
+  }, [isIntersecting]);
 
   const handleWhatsAppQuote = (productName: string) => {
+    const measure = measureInteraction('whatsapp_quote');
     const message = `Olá! Gostaria de solicitar uma cotação para ${productName}. Poderia me enviar mais informações sobre preços e disponibilidade?`;
     window.open(getWhatsAppUrl("5511945403008", message), "_blank");
+    measure();
+  };
+
+  const handleProductView = (productUrl: string) => {
+    const measure = measureInteraction('product_view');
+    window.location.href = productUrl;
+    measure();
   };
 
   return (
-    <section id="produtos" className="py-20 bg-gradient-to-b from-muted/30 to-background">
+    <section 
+      id="produtos" 
+      className="py-20 bg-gradient-to-b from-muted/30 to-background"
+      ref={elementRef as React.RefObject<HTMLElement>}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-quality-lg">
@@ -115,20 +138,25 @@ const ProductsSection = () => {
           </p>
         </div>
 
-        {isLoading ? (
+        {!isIntersecting ? (
+          <div className="h-64 bg-muted animate-pulse rounded-lg flex items-center justify-center">
+            <div className="text-muted-foreground">Carregando produtos...</div>
+          </div>
+        ) : isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <LoadingState type="card" count={8} />
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product, index) => (
-              <Card key={index} className={`stagger-item group card-hover bg-card border-border transition-all duration-300 hover:border-primary/20`}>
+              <Card key={index} className={`stagger-item group card-hover bg-card border-border transition-all duration-300 hover:border-primary/20 gpu-accelerated`}>
                 <div className="relative overflow-hidden rounded-t-lg">
                   <OptimizedImage 
                     src={product.image} 
                     alt={`${product.title} - Produtos Ceará Perfil`}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-all duration-500"
                     lazy={index >= 4}
+                    priority={index < 4}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
@@ -141,7 +169,7 @@ const ProductsSection = () => {
                         size="sm" 
                         variant="secondary" 
                         className="flex-1 bg-white/90 text-gray-900 hover:bg-white"
-                        onClick={() => window.location.href = product.url}
+                        onClick={() => handleProductView(product.url)}
                       >
                         <Eye className="w-4 h-4 mr-1" />
                         Ver
@@ -187,8 +215,10 @@ const ProductsSection = () => {
             size="xl" 
             className="bg-green-600 hover:bg-green-700 text-white shadow-success interactive-glow"
             onClick={() => {
+              const measure = measureInteraction('catalog_request');
               const message = "Olá! Gostaria de ver o catálogo completo de produtos da Ceará Perfil. Poderia me enviar mais informações?";
               window.open(getWhatsAppUrl("5511945403008", message), "_blank");
+              measure();
             }}
           >
             <BsWhatsapp className="w-5 h-5 mr-2" />
