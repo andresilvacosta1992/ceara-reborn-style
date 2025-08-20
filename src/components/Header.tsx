@@ -118,28 +118,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Product Categories Bar */}
-        <div className="bg-gradient-to-r from-primary/95 to-primary text-primary-foreground py-3 border-t border-primary-foreground/10">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              {productCategories.map((category, index) => (
-                <div key={index} className="relative group">
-                  <a
-                    href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="hover:text-white transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-[hsl(var(--ceara-blue-hover))] relative inline-flex items-center"
-                  >
-                    <span className="relative z-10">{category}</span>
-                    <div className="absolute inset-0 bg-[hsl(var(--ceara-blue-soft)/0.2)] rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
-                  </a>
-                  {index < productCategories.length - 1 && (
-                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-3 w-px h-3 bg-primary-foreground/20"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-background border-t">
@@ -165,6 +143,29 @@ const Header = () => {
             </nav>
           </div>
         )}
+
+        {/* Product Categories Bar */}
+        <div className="bg-gradient-to-r from-primary/95 to-primary text-primary-foreground py-3 border-t border-primary-foreground/10">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              {productCategories.map((category, index) => (
+                <div key={index} className="relative group">
+                  <a
+                    href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="hover:text-white transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-[hsl(var(--ceara-blue-hover))] relative inline-flex items-center"
+                  >
+                    <span className="relative z-10">{category}</span>
+                    <div className="absolute inset-0 bg-[hsl(var(--ceara-blue-soft)/0.2)] rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
+                  </a>
+                  {index < productCategories.length - 1 && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-3 w-px h-3 bg-primary-foreground/20"></div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </header>
     </>
   );
