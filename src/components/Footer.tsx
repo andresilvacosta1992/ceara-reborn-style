@@ -3,17 +3,17 @@ const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Footer = () => {
   const productCategories = [
-    "Perfilados",
-    "Eletrocalhas", 
-    "Leitos para cabos",
-    "Acessórios para fixação",
-    "Abraçadeiras",
-    "Eletrodutos",
-    "Dutos de piso",
-    "Rodapés Metálicos",
-    "Quadros de comandos",
-    "Caixa para telefonia",
-    "Abrigos para incêndios"
+    { name: "Perfilados", url: "/produtos/perfilados" },
+    { name: "Eletrocalhas", url: "/produtos/eletrocalhas" }, 
+    { name: "Leitos para cabos", url: "/produtos/leitos-cabos" },
+    { name: "Acessórios para fixação", url: "/produtos/acessorios-fixacao" },
+    { name: "Abraçadeiras", url: "/produtos/abracadeiras" },
+    { name: "Eletrodutos", url: "/produtos/eletrodutos" },
+    { name: "Dutos de piso", url: "/produtos/dutos-piso" },
+    { name: "Rodapés Metálicos", url: "/produtos/rodapes-metalicos" },
+    { name: "Quadros de comandos", url: "/produtos/quadros-comandos" },
+    { name: "Caixa para telefonia", url: "/produtos/caixa-telefonia" },
+    { name: "Abrigos para incêndios", url: "/produtos/abrigos-incendios" }
   ];
 
   return (
@@ -55,10 +55,10 @@ const Footer = () => {
               {productCategories.slice(0, 6).map((product, index) => (
                 <li key={index}>
                   <a 
-                    href={`#${product.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={product.url}
                     className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara text-quality font-inter"
                   >
-                    {product}
+                    {product.name}
                   </a>
                 </li>
               ))}
@@ -72,10 +72,10 @@ const Footer = () => {
               {productCategories.slice(6).map((product, index) => (
                 <li key={index}>
                   <a 
-                    href={`#${product.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={product.url}
                     className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara text-quality font-inter"
                   >
-                    {product}
+                    {product.name}
                   </a>
                 </li>
               ))}

@@ -31,57 +31,68 @@ const ProductsSection = () => {
     {
       title: "Perfilados",
       description: "Estruturas metálicas perfuradas para suporte e organização",
-      image: perfiladosImage
+      image: perfiladosImage,
+      url: "/produtos/perfilados"
     },
     {
       title: "Eletrocalhas",
       description: "Calhas metálicas para condução segura de cabos elétricos",
-      image: eletrocalhasImage
+      image: eletrocalhasImage,
+      url: "/produtos/eletrocalhas"
     },
     {
       title: "Leitos para Cabos",
       description: "Sistemas de suporte para cabeamento em grande escala",
-      image: leitosCabosImage
+      image: leitosCabosImage,
+      url: "/produtos/leitos-cabos"
     },
     {
       title: "Acessórios para Fixação",
       description: "Componentes complementares para instalação e fixação",
-      image: acessoriosFixacaoImage
+      image: acessoriosFixacaoImage,
+      url: "/produtos/acessorios-fixacao"
     },
     {
       title: "Abraçadeiras",
       description: "Elementos de fixação e sustentação para tubulações",
-      image: abracadeirasImage
+      image: abracadeirasImage,
+      url: "/produtos/abracadeiras"
     },
     {
       title: "Eletrodutos",
       description: "Tubulações para proteção e organização de cabos",
-      image: eletrodutosImage
+      image: eletrodutosImage,
+      url: "/produtos/eletrodutos"
     },
     {
       title: "Dutos de Piso",
       description: "Soluções para cabeamento embutido em pisos",
-      image: dutosPisoImage
+      image: dutosPisoImage,
+      url: "/produtos/dutos-piso"
     },
     {
       title: "Rodapés Metálicos",
       description: "Acabamentos metálicos para instalações elétricas",
-      image: rodapesMetalicosImage
+      image: rodapesMetalicosImage,
+      url: "/produtos/rodapes-metalicos"
     },
     {
       title: "Quadros de Comandos",
       description: "Painéis de controle e distribuição elétrica",
-      image: quadrosComandosImage
+      image: quadrosComandosImage,
+      url: "/produtos/quadros-comandos"
     },
     {
       title: "Caixa para Telefonia",
       description: "Caixas especializadas para sistemas de telecomunicações",
-      image: caixaTelefoniaImage
+      image: caixaTelefoniaImage,
+      url: "/produtos/caixa-telefonia"
     },
     {
       title: "Abrigos para Incêndios",
       description: "Equipamentos de segurança e prevenção contra incêndios",
-      image: abrigosIncendiosImage
+      image: abrigosIncendiosImage,
+      url: "/produtos/abrigos-incendios"
     }
   ];
 
@@ -124,7 +135,12 @@ const ProductsSection = () => {
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                     <div className="flex gap-2">
-                      <Button size="sm" variant="secondary" className="flex-1 bg-white/90 text-gray-900 hover:bg-white">
+                      <Button 
+                        size="sm" 
+                        variant="secondary" 
+                        className="flex-1 bg-white/90 text-gray-900 hover:bg-white"
+                        onClick={() => window.location.href = product.url}
+                      >
                         <Eye className="w-4 h-4 mr-1" />
                         Ver
                       </Button>

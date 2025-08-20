@@ -15,17 +15,17 @@ const Header = () => {
   ];
 
   const productCategories = [
-    "Perfilados",
-    "Eletrocalhas", 
-    "Leitos para cabos",
-    "Acessórios para fixação",
-    "Abraçadeiras",
-    "Eletrodutos",
-    "Dutos de piso",
-    "Rodapés Metálicos",
-    "Quadros de comandos",
-    "Caixa para telefonia",
-    "Abrigos para incêndios"
+    { name: "Perfilados", url: "/produtos/perfilados" },
+    { name: "Eletrocalhas", url: "/produtos/eletrocalhas" }, 
+    { name: "Leitos para cabos", url: "/produtos/leitos-cabos" },
+    { name: "Acessórios para fixação", url: "/produtos/acessorios-fixacao" },
+    { name: "Abraçadeiras", url: "/produtos/abracadeiras" },
+    { name: "Eletrodutos", url: "/produtos/eletrodutos" },
+    { name: "Dutos de piso", url: "/produtos/dutos-piso" },
+    { name: "Rodapés Metálicos", url: "/produtos/rodapes-metalicos" },
+    { name: "Quadros de comandos", url: "/produtos/quadros-comandos" },
+    { name: "Caixa para telefonia", url: "/produtos/caixa-telefonia" },
+    { name: "Abrigos para incêndios", url: "/produtos/abrigos-incendios" }
   ];
 
   return (
@@ -151,10 +151,10 @@ const Header = () => {
               {productCategories.map((category, index) => (
                 <div key={index} className="relative group">
                   <a
-                    href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={category.url}
                     className="hover:text-white transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-[hsl(var(--ceara-blue-hover))] relative inline-flex items-center"
                   >
-                    <span className="relative z-10">{category}</span>
+                    <span className="relative z-10">{category.name}</span>
                     <div className="absolute inset-0 bg-[hsl(var(--ceara-blue-soft)/0.2)] rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
                   </a>
                   {index < productCategories.length - 1 && (
