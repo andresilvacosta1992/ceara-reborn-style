@@ -21,14 +21,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div>
-            <a href="/" className="flex items-center space-x-2 mb-6 hover:opacity-80 transition-ceara">
+          <div className="flex flex-col items-center text-center">
+            <a href="/" className="flex items-center justify-center space-x-2 mb-6 hover:opacity-80 transition-ceara">
               <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto" />
             </a>
             <p className="text-sm opacity-80 mb-4 text-quality font-inter leading-relaxed">
               Mais de 15 anos fornecendo soluções em perfilados para construção civil com qualidade, agilidade e confiança.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center space-x-4">
               <a 
                 href="https://www.facebook.com/cearaperfil" 
                 target="_blank" 

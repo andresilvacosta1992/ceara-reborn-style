@@ -34,9 +34,9 @@ const EnhancedLayout = () => {
       
       {/* Floating Action Buttons */}
       <FloatingActionButton
-        fabType="phone"
+        fabType="chat"
         position="bottom-left"
-        onClick={() => window.open("tel:+5511945403008", "_self")}
+        onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
         className="bg-green-600 hover:bg-green-700"
       />
       
@@ -44,9 +44,9 @@ const EnhancedLayout = () => {
         <FloatingActionButton
           fabType="scroll"
           position="bottom-right"
-          offset="large"
+          offset="normal"
           onClick={scrollToTop}
-          className="bg-primary hover:bg-primary/90"
+          className="bg-primary hover:bg-primary/90 bottom-24"
         />
       )}
     </div>
