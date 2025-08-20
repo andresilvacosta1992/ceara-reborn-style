@@ -103,10 +103,10 @@ const Header = () => {
                 <div key={index} className="relative group">
                   <a
                     href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="hover:text-accent transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-white/10 relative inline-flex items-center"
+                    className="hover:text-white transition-ceara px-3 py-1.5 rounded-md text-quality hover:bg-[hsl(var(--ceara-blue-hover))] relative inline-flex items-center"
                   >
                     <span className="relative z-10">{category}</span>
-                    <div className="absolute inset-0 bg-white/5 rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
+                    <div className="absolute inset-0 bg-[hsl(var(--ceara-blue-soft)/0.2)] rounded-md scale-0 group-hover:scale-100 transition-transform"></div>
                   </a>
                   {index < productCategories.length - 1 && (
                     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-3 w-px h-3 bg-primary-foreground/20"></div>

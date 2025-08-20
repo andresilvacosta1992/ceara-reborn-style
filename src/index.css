@@ -43,6 +43,8 @@ All colors MUST be HSL.
     --ceara-blue-dark: 215 100% 32%;
     --ceara-blue-light: 215 100% 85%;
     --ceara-blue-accent: 215 100% 55%;
+    --ceara-blue-hover: 215 100% 65%;
+    --ceara-blue-soft: 215 50% 85%;
     --ceara-gray: 220 13% 18%;
     --ceara-gray-light: 220 10% 95%;
     --success-green: 142 76% 36%;
