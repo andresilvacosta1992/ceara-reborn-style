@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { useState } from "react";
+import { getWhatsAppUrl } from "@/lib/utils";
 const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Header = () => {
@@ -79,7 +80,7 @@ const Header = () => {
                 variant="cta" 
                 size="sm"
                 className="interactive-glow shadow-success px-3"
-                onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
+                onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de solicitar um orçamento."), "_blank")}
               >
                 <BsWhatsapp className="w-4 h-4" />
               </Button>
@@ -109,7 +110,7 @@ const Header = () => {
                 variant="cta" 
                 size="lg" 
                 className="interactive-glow shadow-success"
-                onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
+                onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de solicitar um orçamento."), "_blank")}
               >
                 <BsWhatsapp className="w-5 h-5" />
                 <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
@@ -135,7 +136,7 @@ const Header = () => {
               <Button 
                 variant="cta" 
                 className="mobile-full mt-4"
-                onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
+                onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de solicitar um orçamento completo."), "_blank")}
               >
                 <BsWhatsapp className="w-5 h-5" />
                 <span className="relative z-10">SOLICITAR ORÇAMENTO COMPLETO</span>

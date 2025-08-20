@@ -4,6 +4,7 @@ import { ArrowRight, ShoppingCart, Eye } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { LoadingState } from "@/components/ui/loading-state";
+import { getWhatsAppUrl } from "@/lib/utils";
 import perfiladosImage from "@/assets/products/perfilados.jpg";
 import eletrocalhasImage from "@/assets/products/eletrocalhas.jpg";
 import leitosCabosImage from "@/assets/products/leitos-cabos.jpg";
@@ -98,8 +99,7 @@ const ProductsSection = () => {
 
   const handleWhatsAppQuote = (productName: string) => {
     const message = `Olá! Gostaria de solicitar uma cotação para ${productName}. Poderia me enviar mais informações sobre preços e disponibilidade?`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5511945403008?text=${encodedMessage}`, "_blank");
+    window.open(getWhatsAppUrl("5511945403008", message), "_blank");
   };
 
   return (
@@ -186,8 +186,7 @@ const ProductsSection = () => {
             className="bg-green-600 hover:bg-green-700 text-white shadow-success interactive-glow"
             onClick={() => {
               const message = "Olá! Gostaria de ver o catálogo completo de produtos da Ceará Perfil. Poderia me enviar mais informações?";
-              const encodedMessage = encodeURIComponent(message);
-              window.open(`https://wa.me/5511945403008?text=${encodedMessage}`, "_blank");
+              window.open(getWhatsAppUrl("5511945403008", message), "_blank");
             }}
           >
             <BsWhatsapp className="w-5 h-5 mr-2" />

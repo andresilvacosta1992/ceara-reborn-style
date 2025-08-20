@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import { FloatingActionButton } from "@/components/ui/floating-action-button";
 import { ArrowUp } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const EnhancedLayout = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -37,7 +38,7 @@ const EnhancedLayout = () => {
       <FloatingActionButton
         fabType="custom"
         position="bottom-right"
-        onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
+        onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de saber mais sobre seus produtos."), "_blank")}
         className="bg-green-600 hover:bg-green-700 bottom-20"
       >
         <BsWhatsapp className="w-6 h-6" />

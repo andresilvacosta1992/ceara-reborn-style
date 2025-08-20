@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Footer = () => {
@@ -89,7 +90,7 @@ const Footer = () => {
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
                 <a 
-                  href="https://api.whatsapp.com/send?phone=5511945403008"
+                  href={getWhatsAppUrl("5511945403008", "Olá! Gostaria de saber mais sobre seus produtos.")}
                   className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara"
                 >
                   (11) 94540-3008

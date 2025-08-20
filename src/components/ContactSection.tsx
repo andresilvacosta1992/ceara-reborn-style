@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, Instagram, Facebook, MapPin, ExternalLink } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const ContactSection = () => {
   const contactInfo = [
@@ -14,7 +15,7 @@ const ContactSection = () => {
       icon: Phone,
       title: "WhatsApp",
       content: "(11) 94540-3008",
-      link: "https://api.whatsapp.com/send?phone=5511945403008&text=Ol%C3%A1,%20Gostaria%20de%20Solicitar%20um%20Or%C3%A7amento..."
+      link: getWhatsAppUrl("5511945403008", "Olá, Gostaria de Solicitar um Orçamento...")
     },
     {
       icon: Instagram,
@@ -108,7 +109,10 @@ const ContactSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <Button className="btn-success text-lg px-8 py-4">
+          <Button 
+            className="btn-success text-lg px-8 py-4"
+            onClick={() => window.open(getWhatsAppUrl("5511945403008", "Olá! Gostaria de solicitar um orçamento."), "_blank")}
+          >
             SOLICITAR ORÇAMENTO AGORA
           </Button>
         </div>

@@ -4,12 +4,12 @@ import { BsWhatsapp } from "react-icons/bs";
 import { ArrowLeft, Phone, Mail, Wrench, Shield, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import abracadeirasImage from "@/assets/products/abracadeiras.jpg";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const Abracadeiras = () => {
   const handleWhatsAppQuote = (productType: string) => {
     const message = `Olá! Gostaria de solicitar uma cotação para ${productType}. Poderia me enviar mais informações sobre preços, medidas disponíveis e especificações técnicas?`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5511945403008?text=${encodedMessage}`, "_blank");
+    window.open(getWhatsAppUrl("5511945403008", message), "_blank");
   };
 
   const features = [
