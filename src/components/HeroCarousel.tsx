@@ -12,7 +12,7 @@ const slideImages = {
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const slides = [
     {
@@ -67,46 +67,48 @@ const HeroCarousel = () => {
     }
   ];
 
-  // Auto-advance slides
+  // Preload all images immediately
   useEffect(() => {
+    const preloadImages = () => {
+      slides.forEach((slide) => {
+        const img = new Image();
+        img.src = slide.image;
+      });
+      setImagesLoaded(true);
+    };
+
+    preloadImages();
+  }, [slides]);
+
+  // Auto-advance slides only after images are loaded
+  useEffect(() => {
+    if (!imagesLoaded) return;
+
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-        setIsTransitioning(false);
-      }, 150);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [slides.length, imagesLoaded]);
 
   const nextSlide = useCallback(() => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setIsTransitioning(false);
-    }, 150);
-  }, [slides.length, isTransitioning]);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
 
   const prevSlide = useCallback(() => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-      setIsTransitioning(false);
-    }, 150);
-  }, [slides.length, isTransitioning]);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, [slides.length]);
 
   const currentSlideData = slides[currentSlide];
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
       <div 
-        className={`absolute inset-0 bg-cover bg-center slide-container slide-image ${isTransitioning ? 'opacity-90' : 'opacity-100'}`}
+        className="absolute inset-0 bg-cover bg-center slide-image"
         style={{ 
           backgroundImage: `url(${currentSlideData.image})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          opacity: imagesLoaded ? 1 : 0
         }}
       >
         <div className="hero-overlay absolute inset-0"></div>
