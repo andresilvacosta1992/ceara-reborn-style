@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="hsl(222.2 84% 4.9%)" />
+    
+    <!-- Performance optimizations -->
+    <meta http-equiv="X-DNS-Prefetch-Control" content="on">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS inline for instant loading -->
+    <style>
+      :root{--background:0 0% 100%;--foreground:220 13% 18%;--primary:215 95% 40%;--primary-foreground:0 0% 100%;}
+      body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:hsl(var(--background));color:hsl(var(--foreground));line-height:1.6;}
+      .loading{display:flex;justify-content:center;align-items:center;height:100vh;}
+      .spinner{width:2rem;height:2rem;border:2px solid hsl(var(--primary)/0.2);border-top:2px solid hsl(var(--primary));border-radius:50%;animation:spin 1s linear infinite;}
+      @keyframes spin{to{transform:rotate(360deg);}}
+    </style>
+    
+    <!-- Preload critical font with inline fallback -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Ceará Perfil - Especialistas em eletrocalhas, perfilados metálicos e soluções para infraestrutura elétrica. Qualidade profissional garantida há mais de 20 anos no Ceará." />
+    <meta name="keywords" content="eletrocalhas, perfilados metálicos, infraestrutura elétrica, leitos para cabos, eletrodutos, abraçadeiras, quadros comandos, Fortaleza, Ceará" />
+    <meta name="author" content="Ceará Perfil" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ceará Perfil - Soluções em Infraestrutura Elétrica | Eletrocalhas e Perfilados" />
+    <meta property="og:description" content="Eletrocalhas, perfilados metálicos e produtos para infraestrutura elétrica. Qualidade profissional garantida há mais de 20 anos." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cearaperfil.com.br" />
+    <meta property="og:image" content="https://cearaperfil.com.br/assets/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Ceará Perfil" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ceará Perfil - Soluções em Infraestrutura Elétrica" />
+    <meta name="twitter:description" content="Eletrocalhas, perfilados metálicos e produtos para infraestrutura elétrica com qualidade profissional." />
+    <meta name="twitter:image" content="https://cearaperfil.com.br/assets/logo.png" />
+    
+    <!-- Canonical URL and Schema -->
+    <link rel="canonical" href="https://cearaperfil.com.br" />
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ceará Perfil",
+      "url": "https://cearaperfil.com.br",
+      "logo": "https://cearaperfil.com.br/assets/logo.png",
+      "description": "Especialistas em eletrocalhas, perfilados metálicos e soluções para infraestrutura elétrica",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "CE",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-85-98765-4321",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    
+    <title>Ceará Perfil - Soluções em Infraestrutura Elétrica | Eletrocalhas e Perfilados Metálicos</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
