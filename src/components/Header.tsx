@@ -30,8 +30,8 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Header */}
-      <div className="bg-primary text-primary-foreground py-2 px-4">
+      {/* Top Header - Hidden on mobile */}
+      <div className="bg-primary text-primary-foreground py-2 px-4 hidden md:block">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-2 md:gap-0">
           <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4 text-center md:text-left">
             <div className="flex items-center space-x-1">
@@ -58,12 +58,32 @@ const Header = () => {
       <header className="bg-background shadow-ceara z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a href="/" className="flex items-center hover:opacity-80 transition-ceara">
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+
+            {/* Logo - Centered on mobile */}
+            <a href="/" className="flex items-center hover:opacity-80 transition-ceara md:flex-none flex-1 justify-center md:justify-start">
               <div className="relative">
-                <img src={logoUrl} alt="Ceará Perfil" className="h-20 w-auto drop-shadow-sm" />
+                <img src={logoUrl} alt="Ceará Perfil" className="h-16 md:h-20 w-auto drop-shadow-sm" />
               </div>
             </a>
+
+            {/* Mobile WhatsApp Button */}
+            <div className="md:hidden">
+              <Button 
+                variant="cta" 
+                size="sm"
+                className="interactive-glow shadow-success px-3"
+                onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
+              >
+                <BsWhatsapp className="w-4 h-4" />
+              </Button>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
@@ -83,7 +103,7 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* CTA Button */}
+            {/* Desktop CTA Button */}
             <div className="hidden md:block">
               <Button 
                 variant="cta" 
@@ -95,14 +115,6 @@ const Header = () => {
                 <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
               </Button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <Menu className="w-6 h-6" />
-            </button>
           </div>
         </div>
 
@@ -148,7 +160,7 @@ const Header = () => {
                 onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
               >
                 <BsWhatsapp className="w-5 h-5" />
-                <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
+                <span className="relative z-10">SOLICITAR ORÇAMENTO COMPLETO</span>
               </Button>
             </nav>
           </div>

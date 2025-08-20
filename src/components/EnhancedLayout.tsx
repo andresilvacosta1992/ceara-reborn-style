@@ -38,7 +38,7 @@ const EnhancedLayout = () => {
         fabType="custom"
         position="bottom-right"
         onClick={() => window.open("https://wa.me/5511945403008", "_blank")}
-        className="bg-green-600 hover:bg-green-700"
+        className="bg-green-600 hover:bg-green-700 bottom-20"
       >
         <BsWhatsapp className="w-6 h-6" />
       </FloatingActionButton>
@@ -49,7 +49,7 @@ const EnhancedLayout = () => {
           position="bottom-right"
           offset="normal"
           onClick={scrollToTop}
-          className="bg-primary hover:bg-primary/90 bottom-24"
+          className="bg-primary hover:bg-primary/90"
         />
       )}
     </div>
