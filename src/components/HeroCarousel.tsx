@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Button } from "@/components/ui/button";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 
 const slideImages = {
@@ -153,13 +154,12 @@ const HeroCarousel = () => {
         <div className="embla__container h-full">
           {slides.map((slide, index) => (
             <div key={slide.id} className="embla__slide relative h-full flex-none w-full">
-              <img
+              <OptimizedImage
                 src={slide.image}
-                alt={slide.title}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
-                }`}
-                loading={index === 0 ? "eager" : "lazy"}
+                alt={`${slide.title} - Ceará Perfil Infraestrutura Elétrica`}
+                className="absolute inset-0 w-full h-full object-cover"
+                lazy={index > 0}
+                sizes="100vw"
                 style={{
                   transform: 'translate3d(0, 0, 0)',
                   willChange: index === selectedIndex ? 'transform' : 'auto'

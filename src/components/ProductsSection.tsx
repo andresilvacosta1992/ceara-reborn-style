@@ -4,6 +4,7 @@ import { ArrowRight, ShoppingCart, Eye } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { LoadingState } from "@/components/ui/loading-state";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { getWhatsAppUrl } from "@/lib/utils";
 import perfiladosImage from "@/assets/products/perfilados.jpg";
 import eletrocalhasImage from "@/assets/products/eletrocalhas.jpg";
@@ -123,11 +124,12 @@ const ProductsSection = () => {
             {products.map((product, index) => (
               <Card key={index} className={`stagger-item group card-hover bg-card border-border transition-all duration-300 hover:border-primary/20`}>
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <img 
+                  <OptimizedImage 
                     src={product.image} 
-                    alt={product.title}
+                    alt={`${product.title} - Produtos Ceará Perfil`}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-all duration-500"
-                    loading={index < 4 ? "eager" : "lazy"}
+                    lazy={index >= 4}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                   <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
