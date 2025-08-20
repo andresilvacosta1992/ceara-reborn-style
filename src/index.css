@@ -194,13 +194,25 @@ All colors MUST be HSL.
     @apply bg-white text-primary border-white transform scale-105 shadow-lg font-semibold;
   }
 
-  /* Smooth slide transitions - no background placeholder */
-  .slide-container {
-    transition: opacity 0.4s ease-in-out;
+  /* Embla Carousel optimized styles */
+  .embla {
+    overflow: hidden;
   }
-
-  .slide-image {
-    transition: opacity 0.4s ease-in-out;
-    will-change: opacity;
+  
+  .embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .embla__slide {
+    transform: translate3d(0, 0, 0);
+    flex: 0 0 100%;
+    min-width: 0;
+    contain: layout style paint;
+  }
+  
+  .embla__slide img {
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 }

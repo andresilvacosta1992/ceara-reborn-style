@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 
@@ -11,8 +13,21 @@ const slideImages = {
 };
 
 const HeroCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(new Array(5).fill(false));
+  
+  const autoplay = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+  
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true,
+      duration: 30,
+      startIndex: 0
+    },
+    [autoplay.current]
+  );
 
   const slides = [
     {
@@ -67,55 +82,97 @@ const HeroCarousel = () => {
     }
   ];
 
-  // Preload all images immediately
+  // Intelligent image preloading
   useEffect(() => {
-    const preloadImages = () => {
-      slides.forEach((slide) => {
-        const img = new Image();
-        img.src = slide.image;
+    const preloadImages = async () => {
+      // Load current image first (priority)
+      const loadImage = (src: string, index: number) => {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            setImagesLoaded(prev => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+            resolve();
+          };
+          img.onerror = () => resolve(); // Continue even if image fails
+          img.src = src;
+        });
+      };
+
+      // Load first image immediately
+      await loadImage(slides[0].image, 0);
+      
+      // Load remaining images with slight delay for smooth UX
+      slides.slice(1).forEach((slide, index) => {
+        setTimeout(() => {
+          loadImage(slide.image, index + 1);
+        }, (index + 1) * 100);
       });
-      setImagesLoaded(true);
     };
 
     preloadImages();
   }, [slides]);
 
-  // Auto-advance slides only after images are loaded
+  // Embla API setup
   useEffect(() => {
-    if (!imagesLoaded) return;
+    if (!emblaApi) return;
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slides.length, imagesLoaded]);
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
+    emblaApi.on('select', onSelect);
+    onSelect();
 
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  }, [slides.length]);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
 
-  const currentSlideData = slides[currentSlide];
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  const currentSlideData = slides[selectedIndex];
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center slide-image"
-        style={{ 
-          backgroundImage: `url(${currentSlideData.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: imagesLoaded ? 1 : 0
-        }}
-      >
-        <div className="hero-overlay absolute inset-0"></div>
+      {/* Embla Carousel Container */}
+      <div className="embla h-full" ref={emblaRef}>
+        <div className="embla__container h-full">
+          {slides.map((slide, index) => (
+            <div key={slide.id} className="embla__slide relative h-full flex-none w-full">
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                  imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
+                }`}
+                loading={index === 0 ? "eager" : "lazy"}
+                style={{
+                  transform: 'translate3d(0, 0, 0)',
+                  willChange: index === selectedIndex ? 'transform' : 'auto'
+                }}
+              />
+              <div className="hero-overlay absolute inset-0"></div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
+      {/* Content Overlay */}
+      <div className="absolute inset-0 z-10 flex items-center">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             {/* Lightning Icon */}
@@ -165,14 +222,16 @@ const HeroCarousel = () => {
 
       {/* Navigation Arrows */}
       <button
-        onClick={prevSlide}
+        onClick={scrollPrev}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara"
+        aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
-        onClick={nextSlide}
+        onClick={scrollNext}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara"
+        aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
@@ -182,10 +241,11 @@ const HeroCarousel = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
+            onClick={() => scrollTo(index)}
             className={`w-3 h-3 rounded-full transition-ceara ${
-              index === currentSlide ? "bg-white" : "bg-white/50"
+              index === selectedIndex ? "bg-white" : "bg-white/50"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
