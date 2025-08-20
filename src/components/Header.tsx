@@ -31,18 +31,18 @@ const Header = () => {
     <>
       {/* Top Header */}
       <div className="bg-primary text-primary-foreground py-2 px-4">
-        <div className="container mx-auto flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-2 md:gap-0">
+          <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4 text-center md:text-left">
             <div className="flex items-center space-x-1">
               <Phone className="w-4 h-4" />
               <span>(11) 94540-3008</span>
             </div>
             <div className="flex items-center space-x-1">
               <Mail className="w-4 h-4" />
-              <span>vendas@cearaperfil.com.br</span>
+              <span className="text-xs md:text-sm">vendas@cearaperfil.com.br</span>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 mt-1 md:mt-0">
             <Facebook className="w-4 h-4 cursor-pointer hover:opacity-80" />
             <Instagram className="w-4 h-4 cursor-pointer hover:opacity-80" />
           </div>
