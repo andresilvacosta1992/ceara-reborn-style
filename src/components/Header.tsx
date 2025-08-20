@@ -50,11 +50,11 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className="bg-background shadow-ceara sticky top-0 z-50">
+      <header className="bg-background shadow-ceara z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
+            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-ceara">
               <div className="relative">
                 <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto drop-shadow-sm" />
               </div>
@@ -62,7 +62,7 @@ const Header = () => {
                 <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide">CEARÁ</h1>
                 <p className="text-sm text-muted-foreground text-quality tracking-widest">PERFIL</p>
               </div>
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">

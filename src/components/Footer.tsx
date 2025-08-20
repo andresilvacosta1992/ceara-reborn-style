@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Footer = () => {
   const productCategories = [
@@ -22,13 +22,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <img src={logo} alt="Ceará Perfil" className="h-12 w-12 brightness-0 invert" />
-              <div>
-                <h3 className="text-xl font-bold">CEARÁ</h3>
-                <p className="text-sm opacity-80">PERFIL</p>
-              </div>
-            </div>
+            <a href="/" className="flex items-center space-x-2 mb-6 hover:opacity-80 transition-ceara">
+              <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto brightness-0 invert" />
+            </a>
             <p className="text-sm opacity-80 mb-4">
               Mais de 15 anos fornecendo soluções em perfilados para construção civil com qualidade, agilidade e confiança.
             </p>
