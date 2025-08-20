@@ -11,6 +11,12 @@ import Contact from "./pages/Contact";
 import Layout from "./components/Layout";
 import EnhancedLayout from "./components/EnhancedLayout";
 import NotFound from "./pages/NotFound";
+import Perfilados from "./pages/products/Perfilados";
+import Eletrocalhas from "./pages/products/Eletrocalhas";
+import DutosPiso from "./pages/products/DutosPiso";
+import Abracadeiras from "./pages/products/Abracadeiras";
+import QuadrosComandos from "./pages/products/QuadrosComandos";
+import Eletrodutos from "./pages/products/Eletrodutos";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +32,12 @@ const App = () => (
             <Route path="home" element={<Home />} />
             <Route path="sobre" element={<About />} />
             <Route path="produtos" element={<Products />} />
+            <Route path="produtos/perfilados" element={<Perfilados />} />
+            <Route path="produtos/eletrocalhas" element={<Eletrocalhas />} />
+            <Route path="produtos/dutos-piso" element={<DutosPiso />} />
+            <Route path="produtos/abracadeiras" element={<Abracadeiras />} />
+            <Route path="produtos/quadros-comandos" element={<QuadrosComandos />} />
+            <Route path="produtos/eletrodutos" element={<Eletrodutos />} />
             <Route path="contato" element={<Contact />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
