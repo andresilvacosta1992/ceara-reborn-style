@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
+const logoUrl = "/lovable-uploads/94dc3378-d11e-4dc5-b109-de257013d848.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,8 +56,7 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <img src={logo} alt="Ceará Perfil" className="h-12 w-12 drop-shadow-sm" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full opacity-80"></div>
+                <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto drop-shadow-sm" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide">CEARÁ</h1>

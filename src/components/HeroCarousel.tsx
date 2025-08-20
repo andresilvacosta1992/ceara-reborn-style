@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
-import heroCablesImage from "@/assets/hero-cables.jpg";
+const slideImages = {
+  equipe: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.png",
+  paineis: "/lovable-uploads/1ca9b540-c06e-456f-b772-296dd218750e.png", 
+  corredor: "/lovable-uploads/ea1a0a40-7949-49e6-af36-7a53d7b9399f.png",
+  perfilados: "/lovable-uploads/4c18daa1-0b84-41e3-ab54-8a5a9c46cff2.png",
+  cabos: "/lovable-uploads/58d6c2c6-934b-42e4-9a5e-dd5604b17556.png"
+};
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,9 +17,9 @@ const HeroCarousel = () => {
       id: 1,
       title: "GESTÃO DE CABOS",
       subtitle: "soluções completas para cabeamento",
-      description: "Eletrocalhas, leitos para cabos e eletrodutos com a qualidade que você precisa",
+      description: "Eletrocalhas, leitos para cabos e eletrodutos com a máxima qualidade",
       categories: ["Eletrocalhas", "Leitos para cabos", "Eletrodutos"],
-      image: heroCablesImage,
+      image: slideImages.cabos,
       primaryBtn: "SOLICITAR ORÇAMENTO",
       secondaryBtn: "VER PRODUTOS"
     },
@@ -23,37 +29,37 @@ const HeroCarousel = () => {
       subtitle: "sistemas robustos de suporte",
       description: "Perfilados, acessórios para fixação e abraçadeiras para suas instalações",
       categories: ["Perfilados", "Acessórios para fixação", "Abraçadeiras"],
-      image: heroCablesImage,
+      image: slideImages.perfilados,
       primaryBtn: "CONSULTAR PREÇOS",
       secondaryBtn: "CATÁLOGO"
     },
     {
       id: 3,
-      title: "ACABAMENTOS",
-      subtitle: "soluções discretas e profissionais",
-      description: "Dutos de piso e rodapés metálicos para acabamentos perfeitos",
-      categories: ["Dutos de piso", "Rodapés Metálicos"],
-      image: heroCablesImage,
+      title: "SOLUÇÕES AVANÇADAS",
+      subtitle: "painéis e sistemas elétricos",
+      description: "Quadros de comandos e sistemas elétricos com tecnologia de ponta",
+      categories: ["Quadros de comandos", "Painéis elétricos", "Sistemas de proteção"],
+      image: slideImages.paineis,
       primaryBtn: "VER MODELOS",
       secondaryBtn: "ESPECIFICAÇÕES"
     },
     {
       id: 4,
-      title: "SOLUÇÕES ESPECIALIZADAS",
-      subtitle: "proteção e organização",
-      description: "Quadros de comandos, caixas para telefonia e abrigos para incêndios",
-      categories: ["Quadros de comandos", "Caixa para telefonia", "Abrigos para incêndios"],
-      image: heroCablesImage,
+      title: "ACABAMENTOS PROFISSIONAIS",
+      subtitle: "infraestrutura discreta e elegante",
+      description: "Dutos de piso e sistemas de acabamento para projetos especiais",
+      categories: ["Dutos de piso", "Rodapés Metálicos", "Acabamentos"],
+      image: slideImages.corredor,
       primaryBtn: "PROJETOS ESPECIAIS",
       secondaryBtn: "CONTATO"
     },
     {
       id: 5,
-      title: "CEARÁ PERFIL",
+      title: "EQUIPE ESPECIALIZADA",
       subtitle: "qualidade, agilidade e confiança",
-      description: "Mais de 15 anos fornecendo soluções em perfilados para construção civil",
-      categories: ["Atendimento Rápido", "Qualidade Garantida", "Entrega Ágil"],
-      image: heroCablesImage,
+      description: "Profissionais qualificados para projetos de infraestrutura elétrica",
+      categories: ["Consultoria Técnica", "Suporte Especializado", "Projetos Customizados"],
+      image: slideImages.equipe,
       primaryBtn: "FALE CONOSCO",
       secondaryBtn: "SOBRE NÓS"
     }
