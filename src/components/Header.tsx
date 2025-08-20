@@ -54,13 +54,9 @@ const Header = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-ceara">
+            <a href="/" className="flex items-center hover:opacity-80 transition-ceara">
               <div className="relative">
-                <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto drop-shadow-sm" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide font-playfair">CEARÁ</h1>
-                <p className="text-sm text-muted-foreground text-quality tracking-widest font-inter">PERFIL</p>
+                <img src={logoUrl} alt="Ceará Perfil" className="h-20 w-auto drop-shadow-sm" />
               </div>
             </a>
 
