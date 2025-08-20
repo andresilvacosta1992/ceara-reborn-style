@@ -1,9 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, ShoppingCart, Eye } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { LoadingState } from "@/components/ui/loading-state";
-import perfiladosImage from "@/assets/perfilados.jpg";
+import perfiladosImage from "@/assets/products/perfilados.jpg";
+import eletrocalhasImage from "@/assets/products/eletrocalhas.jpg";
+import leitosCabosImage from "@/assets/products/leitos-cabos.jpg";
+import acessoriosFixacaoImage from "@/assets/products/acessorios-fixacao.jpg";
+import abracadeirasImage from "@/assets/products/abracadeiras.jpg";
+import eletrodutosImage from "@/assets/products/eletrodutos.jpg";
+import dutosPisoImage from "@/assets/products/dutos-piso.jpg";
+import rodapesMetalicosImage from "@/assets/products/rodapes-metalicos.jpg";
+import quadrosComandosImage from "@/assets/products/quadros-comandos.jpg";
+import caixaTelefoniaImage from "@/assets/products/caixa-telefonia.jpg";
+import abrigosIncendiosImage from "@/assets/products/abrigos-incendios.jpg";
 
 const ProductsSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,54 +36,60 @@ const ProductsSection = () => {
     {
       title: "Eletrocalhas",
       description: "Calhas metálicas para condução segura de cabos elétricos",
-      image: perfiladosImage
+      image: eletrocalhasImage
     },
     {
       title: "Leitos para Cabos",
       description: "Sistemas de suporte para cabeamento em grande escala",
-      image: perfiladosImage
+      image: leitosCabosImage
     },
     {
       title: "Acessórios para Fixação",
       description: "Componentes complementares para instalação e fixação",
-      image: perfiladosImage
+      image: acessoriosFixacaoImage
     },
     {
       title: "Abraçadeiras",
       description: "Elementos de fixação e sustentação para tubulações",
-      image: perfiladosImage
+      image: abracadeirasImage
     },
     {
       title: "Eletrodutos",
       description: "Tubulações para proteção e organização de cabos",
-      image: perfiladosImage
+      image: eletrodutosImage
     },
     {
       title: "Dutos de Piso",
       description: "Soluções para cabeamento embutido em pisos",
-      image: perfiladosImage
+      image: dutosPisoImage
     },
     {
       title: "Rodapés Metálicos",
       description: "Acabamentos metálicos para instalações elétricas",
-      image: perfiladosImage
+      image: rodapesMetalicosImage
     },
     {
       title: "Quadros de Comandos",
       description: "Painéis de controle e distribuição elétrica",
-      image: perfiladosImage
+      image: quadrosComandosImage
     },
     {
       title: "Caixa para Telefonia",
       description: "Caixas especializadas para sistemas de telecomunicações",
-      image: perfiladosImage
+      image: caixaTelefoniaImage
     },
     {
       title: "Abrigos para Incêndios",
       description: "Equipamentos de segurança e prevenção contra incêndios",
-      image: perfiladosImage
+      image: abrigosIncendiosImage
     }
   ];
+
+  const handleWhatsAppQuote = (productName: string) => {
+    const message = `Olá! Gostaria de solicitar uma cotação para ${productName}. Poderia me enviar mais informações sobre preços e disponibilidade?`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/5511945403008?text=${encodedMessage}`, "_blank");
+  };
 
   return (
     <section id="produtos" className="py-20 bg-gradient-to-b from-muted/30 to-background">
@@ -111,8 +128,13 @@ const ProductsSection = () => {
                         <Eye className="w-4 h-4 mr-1" />
                         Ver
                       </Button>
-                      <Button size="sm" variant="default" className="flex-1">
-                        <ShoppingCart className="w-4 h-4 mr-1" />
+                      <Button 
+                        size="sm" 
+                        variant="cta" 
+                        className="flex-1 bg-green-600 hover:bg-green-700"
+                        onClick={() => handleWhatsAppQuote(product.title)}
+                      >
+                        <BsWhatsapp className="w-4 h-4 mr-1" />
                         Cotar
                       </Button>
                     </div>
@@ -128,11 +150,12 @@ const ProductsSection = () => {
                     {product.description}
                   </p>
                   <Button 
-                    variant="ghost" 
-                    className="w-full justify-between text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 group/btn interactive-scale"
+                    variant="cta" 
+                    className="w-full bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => handleWhatsAppQuote(product.title)}
                   >
-                    <span>Ver Produtos</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                    <BsWhatsapp className="w-4 h-4 mr-2" />
+                    <span>Solicitar Cotação</span>
                   </Button>
                 </CardContent>
               </Card>
@@ -141,8 +164,18 @@ const ProductsSection = () => {
         )}
 
         <div className="text-center mt-12">
-          <Button variant="cta" size="xl" className="shadow-success interactive-glow">
-            <span className="relative z-10">Ver Catálogo Completo</span>
+          <Button 
+            variant="cta" 
+            size="xl" 
+            className="bg-green-600 hover:bg-green-700 text-white shadow-success interactive-glow"
+            onClick={() => {
+              const message = "Olá! Gostaria de ver o catálogo completo de produtos da Ceará Perfil. Poderia me enviar mais informações?";
+              const encodedMessage = encodeURIComponent(message);
+              window.open(`https://wa.me/5511945403008?text=${encodedMessage}`, "_blank");
+            }}
+          >
+            <BsWhatsapp className="w-5 h-5 mr-2" />
+            <span className="relative z-10">Solicitar Catálogo Completo</span>
           </Button>
         </div>
       </div>
