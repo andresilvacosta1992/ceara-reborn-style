@@ -59,8 +59,8 @@ const Header = () => {
                 <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto drop-shadow-sm" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide">CEARÁ</h1>
-                <p className="text-sm text-muted-foreground text-quality tracking-widest">PERFIL</p>
+                <h1 className="text-xl font-bold text-ceara-gray text-quality-md tracking-wide font-playfair">CEARÁ</h1>
+                <p className="text-sm text-muted-foreground text-quality tracking-widest font-inter">PERFIL</p>
               </div>
             </a>
 
@@ -70,7 +70,7 @@ const Header = () => {
                 <div key={item.label} className="relative group">
                   <a
                     href={item.href}
-                    className="text-foreground hover:text-primary transition-ceara font-medium text-quality relative px-3 py-2 rounded-md hover:bg-muted/50"
+                    className="text-foreground hover:text-primary transition-ceara font-medium text-quality relative px-3 py-2 rounded-md hover:bg-muted/50 font-inter"
                   >
                     {item.label}
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>

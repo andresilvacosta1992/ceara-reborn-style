@@ -101,17 +101,17 @@ const HeroCarousel = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-quality-lg">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-quality-lg font-playfair">
               {currentSlideData.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl mb-6 opacity-90 italic text-quality-md">
+            <p className="text-xl md:text-2xl mb-6 opacity-90 italic text-quality-md font-inter">
               {currentSlideData.subtitle}
             </p>
 
             {/* Description */}
-            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80 text-quality">
+            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80 text-quality font-inter leading-relaxed">
               {currentSlideData.description}
             </p>
 
@@ -120,7 +120,7 @@ const HeroCarousel = () => {
               {currentSlideData.categories.map((category, index) => (
                 <span
                   key={index}
-                  className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 text-quality"
+                  className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 text-quality font-inter"
                 >
                   {category}
                 </span>
@@ -129,10 +129,10 @@ const HeroCarousel = () => {
 
             {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Button className="btn-ceara text-lg px-8 py-4">
+              <Button className="btn-ceara text-lg px-8 py-4 font-inter text-quality">
                 {currentSlideData.primaryBtn}
               </Button>
-              <Button className="btn-ceara-outline text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900">
+              <Button className="btn-ceara-outline text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality">
                 {currentSlideData.secondaryBtn}
               </Button>
             </div>

@@ -23,9 +23,9 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <a href="/" className="flex items-center space-x-2 mb-6 hover:opacity-80 transition-ceara">
-              <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto brightness-0 invert" />
+              <img src={logoUrl} alt="Ceará Perfil" className="h-16 w-auto" />
             </a>
-            <p className="text-sm opacity-80 mb-4">
+            <p className="text-sm opacity-80 mb-4 text-quality font-inter leading-relaxed">
               Mais de 15 anos fornecendo soluções em perfilados para construção civil com qualidade, agilidade e confiança.
             </p>
             <div className="flex space-x-4">
@@ -50,13 +50,13 @@ const Footer = () => {
 
           {/* Products */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Produtos</h4>
+            <h4 className="text-lg font-semibold mb-4 text-quality-md font-playfair">Produtos</h4>
             <ul className="space-y-2">
               {productCategories.slice(0, 6).map((product, index) => (
                 <li key={index}>
                   <a 
                     href={`#${product.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara"
+                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara text-quality font-inter"
                   >
                     {product}
                   </a>
@@ -67,13 +67,13 @@ const Footer = () => {
 
           {/* More Products */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Mais Produtos</h4>
+            <h4 className="text-lg font-semibold mb-4 text-quality-md font-playfair">Mais Produtos</h4>
             <ul className="space-y-2">
               {productCategories.slice(6).map((product, index) => (
                 <li key={index}>
                   <a 
                     href={`#${product.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara"
+                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-ceara text-quality font-inter"
                   >
                     {product}
                   </a>
@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contato</h4>
+            <h4 className="text-lg font-semibold mb-4 text-quality-md font-playfair">Contato</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
@@ -117,7 +117,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-sm opacity-80">
+          <p className="text-sm opacity-80 text-quality font-inter">
             © {new Date().getFullYear()} Ceará Perfil. Todos os direitos reservados.
           </p>
         </div>
