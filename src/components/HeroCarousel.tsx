@@ -208,11 +208,15 @@ const HeroCarousel = () => {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Button className="btn-ceara text-lg px-8 py-4 font-inter text-quality">
-                {currentSlideData.primaryBtn}
+            <div className="mobile-stack justify-center">
+              <Button variant="cta" size="xl" className="interactive-glow font-inter text-quality shadow-success">
+                <span className="relative z-10">{currentSlideData.primaryBtn}</span>
               </Button>
-              <Button className="btn-ceara-outline text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality">
+              <Button 
+                variant="outline" 
+                size="xl" 
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality interactive-scale bg-white/10 backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300"
+              >
                 {currentSlideData.secondaryBtn}
               </Button>
             </div>

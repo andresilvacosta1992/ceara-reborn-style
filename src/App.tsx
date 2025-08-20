@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import Layout from "./components/Layout";
+import EnhancedLayout from "./components/EnhancedLayout";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,7 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<EnhancedLayout />}>
             <Route index element={<Index />} />
             <Route path="home" element={<Home />} />
             <Route path="sobre" element={<About />} />

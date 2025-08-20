@@ -58,13 +58,26 @@ All colors MUST be HSL.
     --shadow-md: 0 4px 6px -1px hsl(var(--ceara-blue) / 0.1), 0 2px 4px -1px hsl(var(--ceara-blue) / 0.06);
     --shadow-lg: 0 10px 15px -3px hsl(var(--ceara-blue) / 0.1), 0 4px 6px -2px hsl(var(--ceara-blue) / 0.05);
     
-    /* Animations */
+    /* Enhanced Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-fast: all 0.15s ease-out;
+    --transition-slow: all 0.6s ease-in-out;
 
     /* Text Shadows for Quality */
     --text-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
     --text-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.15);
     --text-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    /* Enhanced Gradients */
+    --gradient-cta: linear-gradient(135deg, hsl(var(--success-green)) 0%, hsl(142 76% 30%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--ceara-blue-accent)) 0%, hsl(var(--ceara-blue)) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+
+    /* Enhanced Shadows with Color */
+    --shadow-glow: 0 0 30px hsl(var(--ceara-blue) / 0.3);
+    --shadow-success: 0 4px 20px hsl(var(--success-green) / 0.25);
+    --shadow-float: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
     --radius: 0.5rem;
 
@@ -152,7 +165,16 @@ All colors MUST be HSL.
   .transition-ceara {
     transition: var(--transition-smooth);
   }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
   
+  /* Enhanced Button Styles */
   .btn-ceara {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-ceara shadow-ceara;
   }
@@ -163,6 +185,34 @@ All colors MUST be HSL.
   
   .btn-success {
     @apply bg-green-600 text-white hover:bg-green-700 px-6 py-3 rounded-md font-medium transition-ceara shadow-ceara;
+  }
+
+  /* New CTA Button with Enhanced Effects */
+  .btn-cta {
+    @apply relative overflow-hidden bg-gradient-to-r from-green-600 to-green-700 text-white font-bold px-8 py-4 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .btn-cta::before {
+    @apply absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 opacity-0 transition-opacity duration-300;
+    content: '';
+  }
+
+  .btn-cta:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-cta span {
+    @apply relative z-10;
+  }
+
+  /* Floating Action Button */
+  .btn-fab {
+    @apply fixed bottom-6 right-6 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300 z-50;
+    box-shadow: var(--shadow-float);
+  }
+
+  .btn-fab:hover {
+    box-shadow: var(--shadow-glow);
   }
   
   /* High Quality Text */
@@ -216,5 +266,74 @@ All colors MUST be HSL.
   .embla__slide img {
     backface-visibility: hidden;
     transform: translateZ(0);
+  }
+
+  /* Loading and Skeleton Animations */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  .skeleton-text {
+    @apply h-4 bg-muted rounded animate-pulse;
+  }
+
+  .skeleton-circle {
+    @apply rounded-full bg-muted animate-pulse;
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Stagger Animation for Lists */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInStagger 0.6s ease-out forwards;
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes slideInStagger {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile-First Responsive Utilities */
+  .mobile-stack {
+    @apply flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4;
+  }
+
+  .mobile-center {
+    @apply text-center md:text-left;
+  }
+
+  .mobile-full {
+    @apply w-full md:w-auto;
+  }
+
+  /* Interactive Elements */
+  .interactive-scale {
+    @apply transform transition-transform duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .interactive-glow {
+    @apply transition-all duration-300;
+  }
+
+  .interactive-glow:hover {
+    box-shadow: var(--shadow-glow);
   }
 }

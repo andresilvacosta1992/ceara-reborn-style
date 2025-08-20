@@ -80,8 +80,8 @@ const Header = () => {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Button className="btn-success">
-                SOLICITAR ORÇAMENTO
+              <Button variant="cta" size="lg" className="interactive-glow shadow-success">
+                <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
               </Button>
             </div>
 
@@ -131,8 +131,8 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button className="btn-success w-full mt-4">
-                SOLICITAR ORÇAMENTO
+              <Button variant="cta" className="mobile-full mt-4">
+                <span className="relative z-10">SOLICITAR ORÇAMENTO</span>
               </Button>
             </nav>
           </div>
