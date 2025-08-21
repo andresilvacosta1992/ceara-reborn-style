@@ -81,12 +81,50 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
+        manualChunks: (id) => {
+          // Core vendors
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/react-router')) {
+            return 'vendor-router';
+          }
+          if (id.includes('node_modules/@radix-ui')) {
+            return 'vendor-ui';
+          }
+          if (id.includes('node_modules/@tanstack/react-query')) {
+            return 'vendor-query';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons';
+          }
+          // Product pages
+          if (id.includes('/pages/products/')) {
+            return 'pages-products';
+          }
+          // Main pages
+          if (id.includes('/pages/')) {
+            return 'pages-main';
+          }
+          // Components
+          if (id.includes('/components/') && !id.includes('/ui/')) {
+            return 'components-main';
+          }
+          // UI components
+          if (id.includes('/components/ui/')) {
+            return 'components-ui';
+          }
+          // Other node_modules
+          if (id.includes('node_modules')) {
+            return 'vendor-misc';
+          }
         }
       }
-    }
+    },
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    sourcemap: false,
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1000
   }
 }));

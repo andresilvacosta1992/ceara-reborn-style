@@ -361,11 +361,38 @@ All colors MUST be HSL.
     backface-visibility: hidden;
   }
 
+  /* Critical performance styles */
+  .critical-resource {
+    contain: layout style paint;
+  }
+
+  .non-critical {
+    contain: layout style;
+  }
+
+  /* Font display optimization */
+  .font-display-swap {
+    font-display: swap;
+  }
+
   /* Image optimization */
   .optimized-image {
     @apply will-change-transform;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    contain: layout style paint;
+  }
+
+  /* Critical above-the-fold styles */
+  .above-fold {
+    contain: layout style paint;
+    content-visibility: auto;
+  }
+
+  /* Below-the-fold optimization */
+  .below-fold {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
   }
 
   /* Layout shifts prevention */
