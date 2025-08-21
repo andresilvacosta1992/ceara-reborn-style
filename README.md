@@ -1,59 +1,73 @@
-# Sistema HTML Simples
+# Welcome to your Lovable project
 
-Sistema ultra-simples de componentes HTML que gera arquivos estáticos.
+## Project info
 
-## 🚀 Como usar
+**URL**: https://lovable.dev/projects/f69824eb-8ec9-43a7-b732-01b553a4f4bc
 
-### 1. Construir o site
-```bash
-npm run build
-```
+## How can I edit this code?
 
-### 2. Servir localmente
-```bash
-npm run serve
-```
+There are several ways of editing your application.
 
-### 3. Construir e servir automaticamente
-```bash
+**Use Lovable**
+
+Simply visit the [Lovable Project](https://lovable.dev/projects/f69824eb-8ec9-43a7-b732-01b553a4f4bc) and start prompting.
+
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-## 📁 Estrutura
+**Edit a file directly in GitHub**
 
-```
-componentes_html/          # Componentes HTML reutilizáveis
-├── head_meta.html
-├── header_logo.html
-├── header_menu_paginas.html
-└── ...
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-paginas_html/             # Páginas principais
-├── index.html
-├── sobre.html
-└── produtos.html
+**Use GitHub Codespaces**
 
-static_html/              # Arquivos finais gerados (após build)
-├── index.html
-├── sobre.html
-└── produtos.html
-```
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## 🔧 Como funciona
+## What technologies are used for this project?
 
-1. **Componentes**: Crie arquivos `.html` em `componentes_html/`
-2. **Páginas**: Use `{{ nome_componente.html }}` nas páginas em `paginas_html/`
-3. **Build**: Execute `npm run build` para gerar os arquivos finais
-4. **Deploy**: Use os arquivos da pasta `static_html/`
+This project is built with:
 
-## 📦 Vantagens
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-- ✅ Performance máxima
-- ✅ Zero dependências
-- ✅ SEO otimizado
-- ✅ Fácil manutenção
-- ✅ Deploy simples
+## How can I deploy this project?
 
-## 🌐 Deploy
+Simply open [Lovable](https://lovable.dev/projects/f69824eb-8ec9-43a7-b732-01b553a4f4bc) and click on Share -> Publish.
 
-Faça upload da pasta `static_html/` para qualquer servidor web.
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

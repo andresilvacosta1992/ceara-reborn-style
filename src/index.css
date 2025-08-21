@@ -1,0 +1,408 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    --primary: 215 95% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 10% 95%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 220 10% 95%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 215 100% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 220 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Ceará Perfil Brand Colors - Strong Blue */
+    --ceara-blue: 215 95% 40%;
+    --ceara-blue-dark: 215 100% 32%;
+    --ceara-blue-light: 215 100% 85%;
+    --ceara-blue-accent: 215 100% 55%;
+    --ceara-blue-hover: 215 100% 65%;
+    --ceara-blue-soft: 215 50% 85%;
+    --ceara-gray: 220 13% 18%;
+    --ceara-gray-light: 220 10% 95%;
+    --success-green: 142 76% 36%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ceara-blue-dark)) 0%, hsl(var(--ceara-blue)) 100%);
+    --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--ceara-blue) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--ceara-blue) / 0.1), 0 2px 4px -1px hsl(var(--ceara-blue) / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--ceara-blue) / 0.1), 0 4px 6px -2px hsl(var(--ceara-blue) / 0.05);
+    
+    /* Enhanced Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-fast: all 0.15s ease-out;
+    --transition-slow: all 0.6s ease-in-out;
+
+    /* Text Shadows for Quality */
+    --text-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --text-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.15);
+    --text-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    /* Enhanced Gradients */
+    --gradient-cta: linear-gradient(135deg, hsl(var(--success-green)) 0%, hsl(142 76% 30%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--ceara-blue-accent)) 0%, hsl(var(--ceara-blue)) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+
+    /* Enhanced Shadows with Color */
+    --shadow-glow: 0 0 30px hsl(var(--ceara-blue) / 0.3);
+    --shadow-success: 0 4px 20px hsl(var(--success-green) / 0.25);
+    --shadow-float: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 13% 18%;
+    --foreground: 0 0% 100%;
+
+    --card: 220 13% 18%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 13% 25%;
+    --muted-foreground: 220 8% 65%;
+
+    --accent: 214 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 25%;
+    --input: 220 13% 25%;
+    --ring: 220 100% 50%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .hero-overlay {
+    background: var(--gradient-overlay);
+  }
+  
+  .shadow-ceara {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .transition-ceara {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+  
+  /* Enhanced Button Styles */
+  .btn-ceara {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-ceara shadow-ceara;
+  }
+  
+  .btn-ceara-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-md font-medium transition-ceara;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700 px-6 py-3 rounded-md font-medium transition-ceara shadow-ceara;
+  }
+
+  /* New CTA Button with Enhanced Effects */
+  .btn-cta {
+    @apply relative overflow-hidden bg-gradient-to-r from-green-600 to-green-700 text-white font-bold px-8 py-4 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .btn-cta::before {
+    @apply absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 opacity-0 transition-opacity duration-300;
+    content: '';
+  }
+
+  .btn-cta:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-cta span {
+    @apply relative z-10;
+  }
+
+  /* Floating Action Button */
+  .btn-fab {
+    @apply fixed bottom-6 right-6 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300 z-50;
+    box-shadow: var(--shadow-float);
+  }
+
+  .btn-fab:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* High Quality Text */
+  .text-quality {
+    text-shadow: var(--text-shadow-sm);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .text-quality-md {
+    text-shadow: var(--text-shadow-md);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .text-quality-lg {
+    text-shadow: var(--text-shadow-lg);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Category hover improvements */
+  .category-tag {
+    @apply bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/30 text-white transition-all duration-200 cursor-pointer;
+  }
+  
+  .category-tag:hover {
+    @apply bg-white text-primary border-white transform scale-105 shadow-lg font-semibold;
+  }
+
+  /* Embla Carousel optimized styles */
+  .embla {
+    overflow: hidden;
+  }
+  
+  .embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .embla__slide {
+    transform: translate3d(0, 0, 0);
+    flex: 0 0 100%;
+    min-width: 0;
+    contain: layout style paint;
+  }
+  
+  .embla__slide img {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Loading and Skeleton Animations */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  .skeleton-text {
+    @apply h-4 bg-muted rounded animate-pulse;
+  }
+
+  .skeleton-circle {
+    @apply rounded-full bg-muted animate-pulse;
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Stagger Animation for Lists */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInStagger 0.6s ease-out forwards;
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes slideInStagger {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile-First Responsive Utilities */
+  .mobile-stack {
+    @apply flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4;
+  }
+
+  .mobile-center {
+    @apply text-center md:text-left;
+  }
+
+  .mobile-full {
+    @apply w-full md:w-auto;
+  }
+
+  /* Interactive Elements */
+  .interactive-scale {
+    @apply transform transition-transform duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .interactive-glow {
+    @apply transition-all duration-300;
+  }
+
+  .interactive-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Shimmer animation for loading states */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  /* Image optimization */
+  .optimized-image {
+    @apply will-change-transform;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* Layout shifts prevention */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Preload critical resources */
+  .preload-font {
+    font-display: swap;
+  }
+
+  /* Lazy loading placeholder */
+  .lazy-placeholder {
+    @apply bg-muted animate-pulse rounded;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Smooth scrolling improvements */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
