@@ -1,0 +1,69 @@
+{{ head_meta.html }}
+
+<body>
+    <!-- Header -->
+    <header style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+            {{ header_logo.html }}
+            {{ header_social.html }}
+        </div>
+        
+        <div class="container" style="border-top: 1px solid #f0f0f0; padding: 0;">
+            {{ header_menu_paginas.html }}
+        </div>
+        
+        {{ header_menu_produtos.html }}
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero-sobre" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 0; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px;">Sobre Nossa Empresa</h1>
+                <p style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                    Mais de duas décadas de experiência em infraestrutura elétrica
+                </p>
+            </div>
+        </section>
+
+        <section style="padding: 80px 0; background: white;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 30px; color: #333;">Nossa História</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px; color: #666; line-height: 1.8;">
+                            Fundada em 2000, nossa empresa nasceu da paixão por soluções elétricas de qualidade. 
+                            Ao longo dos anos, nos consolidamos como referência no mercado de infraestrutura elétrica.
+                        </p>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px; color: #666; line-height: 1.8;">
+                            Atendemos desde pequenos projetos residenciais até grandes empreendimentos industriais, 
+                            sempre com o compromisso de oferecer produtos de alta qualidade e atendimento personalizado.
+                        </p>
+                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8;">
+                            Nossa equipe técnica especializada está sempre atualizada com as mais recentes normas 
+                            e tecnologias do setor elétrico.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="/src/assets/hero-cables.jpg" alt="Nossa equipe" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #333; color: white; padding: 50px 0 20px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+                {{ footer_sobre.html }}
+                {{ footer_menu_paginas.html }}
+                {{ footer_menu_produtos.html }}
+            </div>
+            {{ footer_copyright.html }}
+        </div>
+    </footer>
+
+    <script src="components-loader.js"></script>
+</body>
+</html>
