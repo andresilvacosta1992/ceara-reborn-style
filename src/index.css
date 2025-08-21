@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  img {
+    loading: lazy;
+    decoding: async;
+  }
+  
+  /* Prevent layout shift */
+  .hero-image {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
