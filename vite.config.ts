@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from 'vite-plugin-pwa';
-import compression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -14,20 +13,6 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    // Gzip compression
-    compression({
-      algorithm: 'gzip',
-      ext: '.gz',
-      threshold: 1024,
-      deleteOriginFile: false
-    }),
-    // Brotli compression  
-    compression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-      threshold: 1024,
-      deleteOriginFile: false
-    }),
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
@@ -94,74 +79,14 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    target: 'esnext',
-    assetsInlineLimit: 4096,
-    cssCodeSplit: true,
-    minify: 'esbuild',
-    cssMinify: 'esbuild',
-    sourcemap: false,
-    reportCompressedSize: false,
-    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Core vendors
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-            return 'vendor-react';
-          }
-          if (id.includes('node_modules/react-router')) {
-            return 'vendor-router';
-          }
-          if (id.includes('node_modules/@radix-ui')) {
-            return 'vendor-ui';
-          }
-          if (id.includes('node_modules/@tanstack/react-query')) {
-            return 'vendor-query';
-          }
-          if (id.includes('node_modules/lucide-react')) {
-            return 'vendor-icons';
-          }
-          // Product pages
-          if (id.includes('/pages/products/')) {
-            return 'pages-products';
-          }
-          // Main pages
-          if (id.includes('/pages/')) {
-            return 'pages-main';
-          }
-          // Components
-          if (id.includes('/components/') && !id.includes('/ui/')) {
-            return 'components-main';
-          }
-          // UI components
-          if (id.includes('/components/ui/')) {
-            return 'components-ui';
-          }
-          // Other node_modules
-          if (id.includes('node_modules')) {
-            return 'vendor-misc';
-          }
-        },
-        // Compress JS chunks with smaller names
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name?.split('.') || [];
-          const ext = info[info.length - 1];
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
-            return `assets/img/[name]-[hash][extname]`;
-          }
-          if (/woff2?|eot|ttf|otf/i.test(ext)) {
-            return `assets/fonts/[name]-[hash][extname]`;
-          }
-          return `assets/[name]-[hash][extname]`;
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
         }
       }
     }
-  },
-  // Netlify specific optimizations
-  define: {
-    'process.env.NODE_ENV': JSON.stringify(mode),
-    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
   }
 }));

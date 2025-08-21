@@ -1,13 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { useWebVitals } from './hooks/use-web-vitals'
-
-// Initialize Web Vitals monitoring
-const WebVitalsMonitor = () => {
-  useWebVitals();
-  return null;
-};
 
 // Register service worker for performance
 if ('serviceWorker' in navigator) {
@@ -22,10 +15,4 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const root = createRoot(document.getElementById("root")!);
-root.render(
-  <>
-    <WebVitalsMonitor />
-    <App />
-  </>
-);
+createRoot(document.getElementById("root")!).render(<App />);
