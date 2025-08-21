@@ -361,6 +361,36 @@ All colors MUST be HSL.
     backface-visibility: hidden;
   }
 
+  /* Image optimization */
+  .optimized-image {
+    @apply will-change-transform;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* Layout shifts prevention */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Preload critical resources */
+  .preload-font {
+    font-display: swap;
+  }
+
+  /* Lazy loading placeholder */
+  .lazy-placeholder {
+    @apply bg-muted animate-pulse rounded;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 1.5s infinite;
+  }
+
   /* Smooth scrolling improvements */
   .smooth-scroll {
     scroll-behavior: smooth;

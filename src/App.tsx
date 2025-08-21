@@ -3,25 +3,28 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Products from "./pages/Products";
-import Contact from "./pages/Contact";
-import Layout from "./components/Layout";
+import { Suspense } from "react";
 import EnhancedLayout from "./components/EnhancedLayout";
-import NotFound from "./pages/NotFound";
-import Perfilados from "./pages/products/Perfilados";
-import Eletrocalhas from "./pages/products/Eletrocalhas";
-import LeitosCabos from "./pages/products/LeitosCabos";
-import AcessoriosFixacao from "./pages/products/AcessoriosFixacao";
-import DutosPiso from "./pages/products/DutosPiso";
-import RodapesMetalicos from "./pages/products/RodapesMetalicos";
-import Abracadeiras from "./pages/products/Abracadeiras";
-import QuadrosComandos from "./pages/products/QuadrosComandos";
-import CaixaTelefonia from "./pages/products/CaixaTelefonia";
-import AbrigosIncendios from "./pages/products/AbrigosIncendios";
-import Eletrodutos from "./pages/products/Eletrodutos";
+import { PageLoadingFallback } from "@/components/LoadingSuspense";
+import {
+  LazyIndex,
+  LazyHome,
+  LazyAbout,
+  LazyProducts,
+  LazyContact,
+  LazyNotFound,
+  LazyPerfilados,
+  LazyEletrocalhas,
+  LazyLeitosCabos,
+  LazyAcessoriosFixacao,
+  LazyAbracadeiras,
+  LazyEletrodutos,
+  LazyDutosPiso,
+  LazyRodapesMetalicos,
+  LazyQuadrosComandos,
+  LazyCaixaTelefonia,
+  LazyAbrigosIncendios
+} from "@/components/LazyPages";
 
 const queryClient = new QueryClient();
 
@@ -33,25 +36,144 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<EnhancedLayout />}>
-            <Route index element={<Index />} />
-            <Route path="home" element={<Home />} />
-            <Route path="sobre" element={<About />} />
-            <Route path="produtos" element={<Products />} />
-            <Route path="produtos/perfilados" element={<Perfilados />} />
-            <Route path="produtos/eletrocalhas" element={<Eletrocalhas />} />
-            <Route path="produtos/leitos-cabos" element={<LeitosCabos />} />
-            <Route path="produtos/acessorios-fixacao" element={<AcessoriosFixacao />} />
-            <Route path="produtos/abracadeiras" element={<Abracadeiras />} />
-            <Route path="produtos/eletrodutos" element={<Eletrodutos />} />
-            <Route path="produtos/dutos-piso" element={<DutosPiso />} />
-            <Route path="produtos/rodapes-metalicos" element={<RodapesMetalicos />} />
-            <Route path="produtos/quadros-comandos" element={<QuadrosComandos />} />
-            <Route path="produtos/caixa-telefonia" element={<CaixaTelefonia />} />
-            <Route path="produtos/abrigos-incendios" element={<AbrigosIncendios />} />
-            <Route path="contato" element={<Contact />} />
+            <Route 
+              index 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyIndex />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="home" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyHome />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="sobre" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyAbout />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyProducts />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/perfilados" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyPerfilados />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/eletrocalhas" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyEletrocalhas />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/leitos-cabos" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyLeitosCabos />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/acessorios-fixacao" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyAcessoriosFixacao />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/abracadeiras" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyAbracadeiras />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/eletrodutos" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyEletrodutos />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/dutos-piso" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyDutosPiso />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/rodapes-metalicos" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyRodapesMetalicos />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/quadros-comandos" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyQuadrosComandos />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/caixa-telefonia" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyCaixaTelefonia />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="produtos/abrigos-incendios" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyAbrigosIncendios />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="contato" 
+              element={
+                <Suspense fallback={<PageLoadingFallback />}>
+                  <LazyContact />
+                </Suspense>
+              } 
+            />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route 
+            path="*" 
+            element={
+              <Suspense fallback={<PageLoadingFallback />}>
+                <LazyNotFound />
+              </Suspense>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
