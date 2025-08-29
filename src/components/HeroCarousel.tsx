@@ -6,12 +6,19 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import { usePerformance, useWebVitals } from "@/hooks/use-performance";
 
+// Import hero images
+import heroCableManagement from "@/assets/hero-cable-management.jpg";
+import heroStructures from "@/assets/hero-structures.jpg";
+import heroPanels from "@/assets/hero-panels.jpg";
+import heroFinishes from "@/assets/hero-finishes.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
+
 const slideImages = {
-  equipe: "/lovable-uploads/ced4324b-f963-4099-9700-78b7974a7c3b.png",
-  paineis: "/lovable-uploads/1ca9b540-c06e-456f-b772-296dd218750e.png", 
-  corredor: "/lovable-uploads/ea1a0a40-7949-49e6-af36-7a53d7b9399f.png",
-  perfilados: "/lovable-uploads/4c18daa1-0b84-41e3-ab54-8a5a9c46cff2.png",
-  cabos: "/lovable-uploads/58d6c2c6-934b-42e4-9a5e-dd5604b17556.png"
+  cabos: heroCableManagement,
+  perfilados: heroStructures,
+  paineis: heroPanels,
+  corredor: heroFinishes,
+  equipe: heroTeam
 };
 
 const HeroCarousel = () => {
