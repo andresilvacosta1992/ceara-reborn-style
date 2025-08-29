@@ -172,16 +172,16 @@ const HeroCarousel = () => {
   const currentSlideData = slides[selectedIndex];
 
   return (
-    <section id="home" className="relative h-screen overflow-hidden">
+    <section id="home" className="relative min-h-screen h-screen overflow-hidden">
       {/* Embla Carousel Container */}
-      <div className="embla h-full" ref={emblaRef}>
+      <div className="embla h-full w-full" ref={emblaRef}>
         <div className="embla__container h-full">
           {slides.map((slide, index) => (
-            <div key={slide.id} className="embla__slide relative h-full flex-none w-full gpu-accelerated">
+            <div key={slide.id} className="embla__slide relative h-full min-h-screen flex-none w-full gpu-accelerated">
               <OptimizedImage
                 src={slide.image}
                 alt={`${slide.title} - Ceará Perfil Infraestrutura Elétrica`}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center"
                 lazy={index > 0}
                 priority={index === 0}
                 sizes="100vw"
@@ -197,31 +197,31 @@ const HeroCarousel = () => {
       </div>
 
       {/* Content Overlay */}
-      <div className="absolute inset-0 z-10 flex items-center">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="container mx-auto px-4 sm:px-6 h-full flex items-center">
+          <div className="max-w-4xl mx-auto text-center text-white w-full">
             {/* Lightning Icon */}
-            <div className="mb-4 sm:mb-6">
-              <Zap className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-accent animate-pulse" />
+            <div className="mb-2 sm:mb-4">
+              <Zap className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto text-accent animate-pulse" />
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-tight text-quality-lg font-playfair px-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-3 leading-tight text-quality-lg font-playfair px-2">
               {currentSlideData.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 opacity-90 italic text-quality-md font-inter px-2">
+            <p className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 opacity-90 italic text-quality-md font-inter px-2">
               {currentSlideData.subtitle}
             </p>
 
             {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto opacity-80 text-quality font-inter leading-relaxed px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 max-w-3xl mx-auto opacity-80 text-quality font-inter leading-relaxed px-4">
               {currentSlideData.description}
             </p>
 
             {/* Categories */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-4 mb-4 sm:mb-6 px-4">
               {currentSlideData.categories.map((category, index) => (
                 <span
                   key={index}
@@ -233,14 +233,14 @@ const HeroCarousel = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mobile-stack justify-center px-4">
-              <Button variant="cta" size="lg" className="interactive-glow font-inter text-quality shadow-success w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+              <Button variant="cta" size="lg" className="interactive-glow font-inter text-quality shadow-success w-full sm:w-auto text-sm sm:text-base">
                 <span className="relative z-10">{currentSlideData.primaryBtn}</span>
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality interactive-scale bg-white/10 backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 w-full sm:w-auto"
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality interactive-scale bg-white/10 backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 w-full sm:w-auto text-sm sm:text-base"
               >
                 {currentSlideData.secondaryBtn}
               </Button>
