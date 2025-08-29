@@ -198,34 +198,34 @@ const HeroCarousel = () => {
 
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex items-center">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center text-white">
             {/* Lightning Icon */}
-            <div className="mb-6">
-              <Zap className="w-16 h-16 mx-auto text-accent animate-pulse" />
+            <div className="mb-4 sm:mb-6">
+              <Zap className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-accent animate-pulse" />
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-quality-lg font-playfair">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-tight text-quality-lg font-playfair px-2">
               {currentSlideData.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl mb-6 opacity-90 italic text-quality-md font-inter">
+            <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 opacity-90 italic text-quality-md font-inter px-2">
               {currentSlideData.subtitle}
             </p>
 
             {/* Description */}
-            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80 text-quality font-inter leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto opacity-80 text-quality font-inter leading-relaxed px-4">
               {currentSlideData.description}
             </p>
 
             {/* Categories */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
               {currentSlideData.categories.map((category, index) => (
                 <span
                   key={index}
-                  className="category-tag text-quality font-inter gpu-accelerated"
+                  className="category-tag text-quality font-inter gpu-accelerated text-xs sm:text-sm"
                 >
                   {category}
                 </span>
@@ -233,14 +233,14 @@ const HeroCarousel = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mobile-stack justify-center">
-              <Button variant="cta" size="xl" className="interactive-glow font-inter text-quality shadow-success">
+            <div className="mobile-stack justify-center px-4">
+              <Button variant="cta" size="lg" className="interactive-glow font-inter text-quality shadow-success w-full sm:w-auto">
                 <span className="relative z-10">{currentSlideData.primaryBtn}</span>
               </Button>
               <Button 
                 variant="outline" 
-                size="xl" 
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality interactive-scale bg-white/10 backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300"
+                size="lg" 
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-inter text-quality interactive-scale bg-white/10 backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 w-full sm:w-auto"
               >
                 {currentSlideData.secondaryBtn}
               </Button>
@@ -252,26 +252,26 @@ const HeroCarousel = () => {
       {/* Navigation Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara gpu-accelerated"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-ceara gpu-accelerated"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-ceara gpu-accelerated"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-ceara gpu-accelerated"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => scrollTo(index)}
-            className={`w-3 h-3 rounded-full transition-ceara gpu-accelerated ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-ceara gpu-accelerated ${
               index === selectedIndex ? "bg-white" : "bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
